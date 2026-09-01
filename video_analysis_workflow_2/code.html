@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>BORDER-X - Video Analysis</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "inverse-primary": "#4353c3",
+                      "background": "#0f141b",
+                      "on-secondary-container": "#002b50",
+                      "error": "#ffb4ab",
+                      "surface": "#0f141b",
+                      "surface-dim": "#0f141b",
+                      "secondary-fixed-dim": "#a2c9ff",
+                      "on-surface": "#dee2ed",
+                      "primary-fixed-dim": "#bcc3ff",
+                      "on-error": "#690005",
+                      "on-error-container": "#ffdad6",
+                      "secondary": "#a2c9ff",
+                      "on-secondary-fixed": "#001c38",
+                      "primary": "#bcc3ff",
+                      "tertiary-fixed-dim": "#4ae08d",
+                      "surface-container-lowest": "#090e15",
+                      "outline": "#8f8f9f",
+                      "secondary-fixed": "#d3e4ff",
+                      "on-surface-variant": "#c6c5d5",
+                      "tertiary-fixed": "#6bfda7",
+                      "surface-container-high": "#252a32",
+                      "primary-container": "#7c8cff",
+                      "on-primary-container": "#001892",
+                      "outline-variant": "#454653",
+                      "on-tertiary-fixed": "#00210f",
+                      "on-background": "#dee2ed",
+                      "surface-container-highest": "#30353d",
+                      "on-tertiary": "#00391d",
+                      "primary-fixed": "#dfe0ff",
+                      "tertiary-container": "#00ac63",
+                      "on-primary-fixed": "#000c60",
+                      "inverse-surface": "#dee2ed",
+                      "surface-tint": "#bcc3ff",
+                      "surface-container-low": "#171c23",
+                      "tertiary": "#4ae08d",
+                      "on-primary-fixed-variant": "#2839aa",
+                      "on-tertiary-container": "#00371c",
+                      "surface-variant": "#30353d",
+                      "surface-container": "#1b2027",
+                      "on-tertiary-fixed-variant": "#00522c",
+                      "secondary-container": "#3994ef",
+                      "inverse-on-surface": "#2c3138",
+                      "on-secondary-fixed-variant": "#004881",
+                      "error-container": "#93000a",
+                      "on-secondary": "#00315b",
+                      "surface-bright": "#353941",
+                      "on-primary": "#041c94"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "lg": "16px",
+                      "panel-gap": "2px",
+                      "container-margin": "16px",
+                      "xs": "4px",
+                      "md": "12px",
+                      "base": "4px",
+                      "xl": "24px",
+                      "sm": "8px"
+              },
+              "fontFamily": {
+                      "display-md": [
+                              "hankenGrotesk"
+                      ],
+                      "body-lg": [
+                              "geist"
+                      ],
+                      "technical-xs": [
+                              "jetbrainsMono"
+                      ],
+                      "technical-sm": [
+                              "jetbrainsMono"
+                      ],
+                      "body-md": [
+                              "geist"
+                      ],
+                      "display-lg": [
+                              "hankenGrotesk"
+                      ],
+                      "label-caps": [
+                              "hankenGrotesk"
+                      ]
+              },
+              "fontSize": {
+                      "display-md": [
+                              "24px",
+                              {
+                                      "lineHeight": "30px",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-lg": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "technical-xs": [
+                              "11px",
+                              {
+                                      "lineHeight": "14px",
+                                      "letterSpacing": "0.02em",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "technical-sm": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "body-md": [
+                              "13px",
+                              {
+                                      "lineHeight": "18px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "display-lg": [
+                              "28px",
+                              {
+                                      "lineHeight": "34px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "label-caps": [
+                              "10px",
+                              {
+                                      "lineHeight": "12px",
+                                      "letterSpacing": "0.06em",
+                                      "fontWeight": "700"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+    </script>
+<style>
+        body { background-color: theme('colors.background'); color: theme('colors.on-background'); margin: 0; padding: 0; }
+        .glass-panel { background-color: rgba(23, 28, 35, 0.7); backdrop-filter: blur(12px); border: 1px solid theme('colors.outline-variant'); }
+        .grid-layout { display: grid; grid-template-columns: 220px 1fr; gap: theme('spacing.panel-gap'); height: 100vh; overflow: hidden; }
+        .nav-active { background-color: theme('colors.primary-container'); color: theme('colors.on-primary-container'); border-right: 2px solid theme('colors.primary'); }
+        @keyframes pulse-dot { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(0.8); } }
+        .animate-pulse-dot { animation: pulse-dot 1.5s infinite; }
+        @keyframes scan-line { 0% { top: 0; } 100% { top: 100%; } }
+        .scanner { position: absolute; left: 0; right: 0; height: 2px; background: theme('colors.primary-container'); opacity: 0.5; box-shadow: 0 0 10px theme('colors.primary-container'); animation: scan-line 3s linear infinite; z-index: 10; pointer-events: none; }
+    </style>
+</head>
+<body class="antialiased">
+<!-- TopNavBar -->
+<header class="fixed top-0 w-full h-[60px] z-50 flex justify-between items-center px-lg bg-surface dark:bg-surface border-b border-outline-variant flat no shadows">
+<div class="flex items-center gap-md">
+<span class="font-display-md text-display-md font-bold text-primary tracking-tighter">BORDER-X</span>
+</div>
+<div class="hidden md:flex gap-xl">
+<span class="text-on-surface-variant font-technical-sm">AI ENGINE ACTIVE</span>
+<span class="text-on-surface-variant font-technical-sm">CAMERA SYSTEM ONLINE</span>
+</div>
+<div class="flex items-center gap-md">
+<button class="text-on-surface-variant hover:bg-surface-container-high transition-colors p-sm rounded scale-95 active:duration-75">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="text-on-surface-variant hover:bg-surface-container-high transition-colors p-sm rounded scale-95 active:duration-75">
+<span class="material-symbols-outlined">schedule</span>
+</button>
+<div class="w-8 h-8 rounded-full bg-surface-container-highest border border-outline-variant overflow-hidden">
+<img alt="Operator Profile" class="w-full h-full object-cover" data-alt="A futuristic command center operator profile picture, subtle blue lighting, high-tech aesthetic, minimalist, dark mode." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB_RjSXrT2Ni0uliI7eNTw3f2Ajz3QQzm_4pya6sbnmwE1WfvBkr0TrHPI_-rp4O8usD_otJsjhCPaAyX9GitsHvre2WlSN5mmQvutM0xqCVYqAKDMvBJmKECmtLSnQBix0ks0Agl1vCxDTdSHmeEum-oc4bvKnY9K6Hz1THvlGJfpquJOEJcYDVuOvPCTqIO1w90ZvXNpRkneGk1fYfPyG2NbML166BX62D9jjL_A8hg2hJUZzgXtmNw"/>
+</div>
+</div>
+</header>
+<div class="grid-layout pt-[60px]">
+<!-- SideNavBar -->
+<nav class="bg-surface-container-lowest dark:bg-surface-container-lowest border-r border-outline-variant flex flex-col py-md gap-xs h-full overflow-y-auto">
+<div class="px-md pb-md mb-xs border-b border-outline-variant">
+<div class="font-display-md text-display-md text-primary">OPERATOR-01</div>
+<div class="font-technical-xs text-technical-xs text-on-surface-variant mt-xs">COMMAND CENTER</div>
+</div>
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all duration-200" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-body-md text-body-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm bg-primary-container text-on-primary-container border-r-2 border-primary transition-all duration-200" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<span class="font-body-md text-body-md">Video Analysis</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all duration-200" href="#">
+<span class="material-symbols-outlined">videocam</span>
+<span class="font-body-md text-body-md">Live Surveillance</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all duration-200" href="#">
+<span class="material-symbols-outlined">directions_car</span>
+<span class="font-body-md text-body-md">ANPR / Vehicles</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all duration-200" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-body-md text-body-md">People</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all duration-200" href="#">
+<span class="material-symbols-outlined">emergency</span>
+<span class="font-body-md text-body-md">Incidents</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all duration-200" href="#">
+<span class="material-symbols-outlined">linked_camera</span>
+<span class="font-body-md text-body-md">Cameras</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all duration-200" href="#">
+<span class="material-symbols-outlined">monitoring</span>
+<span class="font-body-md text-body-md">Analytics</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all duration-200" href="#">
+<span class="material-symbols-outlined">inventory_2</span>
+<span class="font-body-md text-body-md">Evidence</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all duration-200" href="#">
+<span class="material-symbols-outlined">health_and_safety</span>
+<span class="font-body-md text-body-md">System Health</span>
+</a>
+</nav>
+<!-- Main Content Area -->
+<main class="flex flex-col gap-panel-gap p-container-margin h-full overflow-y-auto bg-surface-container-lowest">
+<div class="flex items-center justify-between mb-sm">
+<h1 class="font-display-lg text-display-lg text-on-surface">Post-Event Video Analysis</h1>
+<div class="flex items-center gap-sm">
+<span class="w-2 h-2 rounded-full bg-tertiary animate-pulse-dot"></span>
+<span class="font-technical-sm text-technical-sm text-tertiary">SYSTEM READY</span>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-lg flex-1">
+<!-- Phase 1: Upload Zone (Currently hidden via JS for Phase 2 demo, but structured here) -->
+<div class="hidden col-span-1 lg:col-span-2 xl:col-span-3 glass-panel rounded-lg flex flex-col items-center justify-center border-dashed border-2 border-outline-variant p-xl min-h-[400px]" id="uploadZone">
+<span class="material-symbols-outlined text-[64px] text-outline mb-md">cloud_upload</span>
+<h2 class="font-display-md text-display-md text-on-surface mb-sm">DROP VIDEO FILE HERE</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mb-lg">Supported formats: MP4, AVI, MKV (Max 2GB)</p>
+<button class="bg-primary-container text-on-primary-container font-technical-sm text-technical-sm px-xl py-md rounded font-bold hover:bg-primary transition-colors">
+                    SELECT VIDEO
+                </button>
+</div>
+<!-- Phase 2: Processing State -->
+<div class="col-span-1 lg:col-span-2 xl:col-span-2 flex flex-col gap-lg h-full" id="processingZone">
+<!-- Video Preview / Processor -->
+<div class="glass-panel rounded-lg flex-1 relative overflow-hidden flex flex-col">
+<div class="p-sm border-b border-outline-variant flex justify-between items-center bg-surface-container-high">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary text-[18px]">movie</span>
+<span class="font-technical-sm text-technical-sm text-on-surface">border_cam_04.mp4</span>
+</div>
+<span class="font-technical-sm text-technical-sm text-on-surface-variant">128 MB</span>
+</div>
+<div class="relative flex-1 bg-black flex items-center justify-center overflow-hidden">
+<!-- Abstract Video Processing Placeholder -->
+<div class="absolute inset-0 opacity-30" data-alt="Abstract, high-contrast black and white satellite imagery of a border crossing at night, technical overlay grid, surveillance aesthetic, deep blacks, sharp details." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBIxbq4A_LJ5N_KOdqOaJOHf0gy7IUNSVdW9mgffGJo0lFPMHlDHMo_ZvCXy5hRwVwJ3bo_O0zsQL3ayqk13pPJugbw4RUw5VajdlA3PexKCpmZlmFIGdnAdJu81Z5aCGjm9oNazydHwGI7H6n8wfIDR86ov8TFbbZ98ggvIwHSL7bIURa8_uOPbM2O1LGLx2PdmNZURp13nPo3xIbXWSruDcuJmtBwLAiNBeuiE1512haNRgwiyJb0pA'); background-size: cover; background-position: center;"></div>
+<div class="scanner"></div>
+<div class="z-10 flex flex-col items-center gap-md p-lg glass-panel rounded border border-primary-container shadow-[0_0_15px_rgba(124,140,255,0.2)]">
+<span class="font-display-lg text-display-lg text-primary-container font-bold">72%</span>
+<span class="font-technical-sm text-technical-sm text-primary">ANALYSIS IN PROGRESS</span>
+</div>
+</div>
+<!-- Progress Bar -->
+<div class="h-2 bg-surface-container-highest w-full">
+<div class="h-full bg-primary-container w-[72%] relative transition-all duration-500 ease-out">
+<div class="absolute top-0 right-0 bottom-0 w-8 bg-gradient-to-r from-transparent to-white opacity-30"></div>
+</div>
+</div>
+</div>
+<!-- Technical Counters (Bento Grid Style) -->
+<div class="grid grid-cols-4 gap-md">
+<div class="glass-panel rounded p-sm flex flex-col items-start border-l-2 border-l-tertiary">
+<span class="font-label-caps text-label-caps text-on-surface-variant mb-xs">FRAMES</span>
+<span class="font-technical-sm text-technical-sm text-on-surface font-bold">4,832</span>
+</div>
+<div class="glass-panel rounded p-sm flex flex-col items-start border-l-2 border-l-secondary-container">
+<span class="font-label-caps text-label-caps text-on-surface-variant mb-xs">OBJECTS</span>
+<span class="font-technical-sm text-technical-sm text-on-surface font-bold">61</span>
+</div>
+<div class="glass-panel rounded p-sm flex flex-col items-start border-l-2 border-l-secondary">
+<span class="font-label-caps text-label-caps text-on-surface-variant mb-xs">VEHICLES</span>
+<span class="font-technical-sm text-technical-sm text-on-surface font-bold">23</span>
+</div>
+<div class="glass-panel rounded p-sm flex flex-col items-start border-l-2 border-l-primary-container">
+<span class="font-label-caps text-label-caps text-on-surface-variant mb-xs">PLATES</span>
+<span class="font-technical-sm text-technical-sm text-on-surface font-bold">18</span>
+</div>
+</div>
+</div>
+<!-- AI Pipeline Stages -->
+<div class="col-span-1 glass-panel rounded-lg flex flex-col h-full">
+<div class="p-md border-b border-outline-variant bg-surface-container-high">
+<h3 class="font-display-md text-display-md text-on-surface">AI Pipeline</h3>
+</div>
+<div class="p-md flex flex-col gap-sm flex-1 overflow-y-auto">
+<div class="flex items-center gap-md p-sm bg-surface-container-low rounded border border-outline-variant opacity-70">
+<span class="material-symbols-outlined text-tertiary">check_circle</span>
+<div class="flex flex-col">
+<span class="font-technical-sm text-technical-sm text-on-surface">Video loaded</span>
+<span class="font-technical-xs text-technical-xs text-on-surface-variant">Complete</span>
+</div>
+</div>
+<div class="flex items-center gap-md p-sm bg-surface-container-low rounded border border-outline-variant opacity-70">
+<span class="material-symbols-outlined text-tertiary">check_circle</span>
+<div class="flex flex-col">
+<span class="font-technical-sm text-technical-sm text-on-surface">Frame extraction</span>
+<span class="font-technical-xs text-technical-xs text-on-surface-variant">Complete</span>
+</div>
+</div>
+<div class="flex items-center gap-md p-sm bg-surface-container-low rounded border border-outline-variant opacity-70">
+<span class="material-symbols-outlined text-tertiary">check_circle</span>
+<div class="flex flex-col">
+<span class="font-technical-sm text-technical-sm text-on-surface">Person detection</span>
+<span class="font-technical-xs text-technical-xs text-on-surface-variant">Complete</span>
+</div>
+</div>
+<div class="flex items-center gap-md p-sm bg-surface-container-low rounded border border-outline-variant opacity-70">
+<span class="material-symbols-outlined text-tertiary">check_circle</span>
+<div class="flex flex-col">
+<span class="font-technical-sm text-technical-sm text-on-surface">Vehicle detection</span>
+<span class="font-technical-xs text-technical-xs text-on-surface-variant">Complete</span>
+</div>
+</div>
+<div class="flex items-center gap-md p-sm bg-primary-container text-on-primary-container rounded border border-primary shadow-[0_0_10px_rgba(124,140,255,0.1)]">
+<span class="material-symbols-outlined animate-spin">sync</span>
+<div class="flex flex-col">
+<span class="font-technical-sm text-technical-sm font-bold">ANPR processing</span>
+<span class="font-technical-xs text-technical-xs">Active</span>
+</div>
+</div>
+<div class="flex items-center gap-md p-sm border border-dashed border-outline-variant rounded opacity-50">
+<span class="material-symbols-outlined text-outline">pending</span>
+<div class="flex flex-col">
+<span class="font-technical-sm text-technical-sm text-on-surface-variant">Incident analysis</span>
+<span class="font-technical-xs text-technical-xs text-outline">Pending</span>
+</div>
+</div>
+</div>
+<div class="p-md border-t border-outline-variant flex gap-sm">
+<button class="flex-1 bg-surface-container-high border border-outline-variant text-on-surface font-technical-sm text-technical-sm py-sm rounded hover:bg-surface-bright transition-colors">
+                        PAUSE
+                    </button>
+<button class="flex-1 bg-error text-on-error font-technical-sm text-technical-sm py-sm rounded hover:bg-red-400 transition-colors font-bold">
+                        TERMINATE
+                    </button>
+</div>
+</div>
+</div>
+</main>
+</div>
+<script>
+    // Simple toggle for demo purposes if needed
+    // document.getElementById('uploadZone').classList.remove('hidden');
+    // document.getElementById('processingZone').classList.add('hidden');
+</script>
+</body></html>

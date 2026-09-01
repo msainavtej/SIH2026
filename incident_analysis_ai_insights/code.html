@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Incident Detail &amp; AI Insight - BORDER-X</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        @import url('https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Hanken+Grotesk:wght@600;700&family=JetBrains+Mono:wght@500&display=swap');
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-primary": "#4353c3",
+                        "background": "#0f141b",
+                        "on-secondary-container": "#002b50",
+                        "error": "#ffb4ab",
+                        "surface": "#0f141b",
+                        "surface-dim": "#0f141b",
+                        "secondary-fixed-dim": "#a2c9ff",
+                        "on-surface": "#dee2ed",
+                        "primary-fixed-dim": "#bcc3ff",
+                        "on-error": "#690005",
+                        "on-error-container": "#ffdad6",
+                        "secondary": "#a2c9ff",
+                        "on-secondary-fixed": "#001c38",
+                        "primary": "#bcc3ff",
+                        "tertiary-fixed-dim": "#4ae08d",
+                        "surface-container-lowest": "#090e15",
+                        "outline": "#8f8f9f",
+                        "secondary-fixed": "#d3e4ff",
+                        "on-surface-variant": "#c6c5d5",
+                        "tertiary-fixed": "#6bfda7",
+                        "surface-container-high": "#252a32",
+                        "primary-container": "#7c8cff",
+                        "on-primary-container": "#001892",
+                        "outline-variant": "#454653",
+                        "on-tertiary-fixed": "#00210f",
+                        "on-background": "#dee2ed",
+                        "surface-container-highest": "#30353d",
+                        "on-tertiary": "#00391d",
+                        "primary-fixed": "#dfe0ff",
+                        "tertiary-container": "#00ac63",
+                        "on-primary-fixed": "#000c60",
+                        "inverse-surface": "#dee2ed",
+                        "surface-tint": "#bcc3ff",
+                        "surface-container-low": "#171c23",
+                        "tertiary": "#4ae08d",
+                        "on-primary-fixed-variant": "#2839aa",
+                        "on-tertiary-container": "#00371c",
+                        "surface-variant": "#30353d",
+                        "surface-container": "#1b2027",
+                        "on-tertiary-fixed-variant": "#00522c",
+                        "secondary-container": "#3994ef",
+                        "inverse-on-surface": "#2c3138",
+                        "on-secondary-fixed-variant": "#004881",
+                        "error-container": "#93000a",
+                        "on-secondary": "#00315b",
+                        "surface-bright": "#353941",
+                        "on-primary": "#041c94"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "lg": "16px",
+                        "panel-gap": "2px",
+                        "container-margin": "16px",
+                        "xs": "4px",
+                        "md": "12px",
+                        "base": "4px",
+                        "xl": "24px",
+                        "sm": "8px"
+                    },
+                    "fontFamily": {
+                        "display-md": ["hankenGrotesk"],
+                        "body-lg": ["geist"],
+                        "technical-xs": ["jetbrainsMono"],
+                        "technical-sm": ["jetbrainsMono"],
+                        "body-md": ["geist"],
+                        "display-lg": ["hankenGrotesk"],
+                        "label-caps": ["hankenGrotesk"]
+                    },
+                    "fontSize": {
+                        "display-md": ["24px", { "lineHeight": "30px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "body-lg": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "technical-xs": ["11px", { "lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "500" }],
+                        "technical-sm": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "body-md": ["13px", { "lineHeight": "18px", "fontWeight": "400" }],
+                        "display-lg": ["28px", { "lineHeight": "34px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "label-caps": ["10px", { "lineHeight": "12px", "letterSpacing": "0.06em", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background min-h-screen overflow-x-hidden selection:bg-primary-container selection:text-on-primary-container flex">
+<!-- SideNavBar -->
+<nav class="fixed left-0 top-[60px] h-[calc(100vh-60px)] w-[220px] bg-surface-container-lowest dark:bg-surface-container-lowest border-r border-outline-variant flex flex-col py-md gap-xs z-40 hidden md:flex">
+<div class="px-md pb-md border-b border-outline-variant mb-sm">
+<div class="font-display-md text-display-md text-primary">OPERATOR-01</div>
+<div class="font-technical-xs text-technical-xs text-on-surface-variant">COMMAND CENTER</div>
+</div>
+<a class="px-md py-sm mx-sm rounded-DEFAULT text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all flex items-center gap-sm" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">dashboard</span>
+<span class="font-body-md text-body-md">Dashboard</span>
+</a>
+<a class="px-md py-sm mx-sm rounded-DEFAULT text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all flex items-center gap-sm" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">analytics</span>
+<span class="font-body-md text-body-md">Video Analysis</span>
+</a>
+<a class="px-md py-sm mx-sm rounded-DEFAULT text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all flex items-center gap-sm" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">videocam</span>
+<span class="font-body-md text-body-md">Live Surveillance</span>
+</a>
+<a class="px-md py-sm mx-sm rounded-DEFAULT text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all flex items-center gap-sm" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">directions_car</span>
+<span class="font-body-md text-body-md">ANPR / Vehicles</span>
+</a>
+<a class="px-md py-sm mx-sm rounded-DEFAULT text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all flex items-center gap-sm" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">person</span>
+<span class="font-body-md text-body-md">People</span>
+</a>
+<a class="px-md py-sm mx-sm rounded-DEFAULT bg-primary-container text-on-primary-container border-r-2 border-primary transition-colors duration-200 flex items-center gap-sm" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">emergency</span>
+<span class="font-body-md text-body-md">Incidents</span>
+</a>
+<a class="px-md py-sm mx-sm rounded-DEFAULT text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all flex items-center gap-sm" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">linked_camera</span>
+<span class="font-body-md text-body-md">Cameras</span>
+</a>
+<a class="px-md py-sm mx-sm rounded-DEFAULT text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all flex items-center gap-sm" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">monitoring</span>
+<span class="font-body-md text-body-md">Analytics</span>
+</a>
+<a class="px-md py-sm mx-sm rounded-DEFAULT text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all flex items-center gap-sm" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">inventory_2</span>
+<span class="font-body-md text-body-md">Evidence</span>
+</a>
+<a class="px-md py-sm mx-sm rounded-DEFAULT text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all flex items-center gap-sm" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">health_and_safety</span>
+<span class="font-body-md text-body-md">System Health</span>
+</a>
+</nav>
+<!-- TopNavBar -->
+<header class="fixed top-0 w-full h-[60px] z-50 bg-surface dark:bg-surface border-b border-outline-variant flex justify-between items-center px-lg">
+<div class="flex items-center gap-lg">
+<div class="font-display-md text-display-md font-bold text-primary tracking-tighter">BORDER-X</div>
+<div class="hidden md:flex items-center gap-md">
+<span class="font-technical-sm text-technical-sm text-tertiary flex items-center gap-xs"><span class="w-2 h-2 rounded-full bg-tertiary"></span> AI ENGINE ACTIVE</span>
+<span class="font-technical-sm text-technical-sm text-tertiary flex items-center gap-xs"><span class="w-2 h-2 rounded-full bg-tertiary"></span> CAMERA SYSTEM ONLINE</span>
+</div>
+</div>
+<div class="flex items-center gap-md">
+<button class="p-xs text-on-surface-variant hover:text-primary hover:bg-surface-container-high transition-colors scale-95 active:duration-75 rounded-DEFAULT">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-xs text-on-surface-variant hover:text-primary hover:bg-surface-container-high transition-colors scale-95 active:duration-75 rounded-DEFAULT">
+<span class="material-symbols-outlined">schedule</span>
+</button>
+<div class="w-8 h-8 rounded-DEFAULT bg-surface-container-highest border border-outline-variant overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A macro shot of a highly detailed, futuristic security operator badge. The badge is crafted from brushed dark titanium with luminescent blue digital accents. The texture is hyper-realistic, showing tiny micro-scratches on the metal surface. The lighting is dramatic, casting deep shadows to emphasize the 3D form of the badge, fitting a high-tech command center aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBRHdmA7TcOOf6ZXPuQRF30KE5inatmavosNLsS5_5dKKhQ21V_-w8eSSN5OuQH9xhSKP3ZQVi2wDMT773_nuv7onlxX8nWoirdvq3oXSX041nZzJA9LqfeV_2cXhPc00PQtUdJhzf4KlVuXN_lSLumwEybAnethm2dIma7dPnUKMtfTWEZaghQy9SSbaUErj6zDrJDY7CrV-0fxu4EK1_BWNbxc6YK_98KIxag_HdGtZJqVRuUgb9oaw"/>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-1 md:ml-[220px] mt-[60px] p-container-margin relative">
+<div class="max-w-[1400px] mx-auto flex flex-col gap-panel-gap">
+<!-- Header Panel -->
+<div class="bg-surface-container-lowest border border-outline-variant p-lg flex flex-col md:flex-row justify-between items-start md:items-center gap-md">
+<div>
+<div class="flex items-center gap-sm mb-xs">
+<span class="font-label-caps text-label-caps text-error bg-[#FF5C67]/15 px-2 py-1 rounded-full border border-error/30 flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px]">warning</span> CRITICAL
+                        </span>
+<span class="font-technical-sm text-technical-sm text-on-surface-variant">14:31:42</span>
+</div>
+<h1 class="font-display-lg text-display-lg text-on-surface">INCIDENT #BX-1042</h1>
+</div>
+<div class="flex gap-sm">
+<button class="px-md py-sm bg-surface-container-lowest border border-outline-variant text-on-surface font-technical-sm text-technical-sm rounded-DEFAULT hover:bg-surface-container-high transition-colors">
+                        VIEW EVIDENCE
+                    </button>
+<button class="px-md py-sm bg-surface-container-lowest border border-outline-variant text-on-surface font-technical-sm text-technical-sm rounded-DEFAULT hover:bg-surface-container-high transition-colors">
+                        ACKNOWLEDGE
+                    </button>
+<button class="px-md py-sm bg-[#FF5C67] text-[#080B10] font-technical-sm text-technical-sm rounded-DEFAULT hover:opacity-90 transition-opacity font-bold">
+                        RESOLVE
+                    </button>
+</div>
+</div>
+<!-- Bento Grid -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-panel-gap">
+<!-- Video Feed (Takes up more space) -->
+<div class="md:col-span-8 bg-surface-container-lowest border border-outline-variant relative min-h-[400px] overflow-hidden group">
+<div class="absolute top-sm right-sm z-10 flex gap-sm">
+<div class="backdrop-blur-md bg-surface-container-highest/60 border border-outline-variant/50 px-2 py-1 rounded-DEFAULT font-technical-xs text-technical-xs text-on-surface flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-[#FF5C67] animate-pulse"></span> REC
+                        </div>
+<div class="backdrop-blur-md bg-surface-container-highest/60 border border-outline-variant/50 px-2 py-1 rounded-DEFAULT font-technical-xs text-technical-xs text-on-surface">
+                            CAM-04
+                        </div>
+</div>
+<div class="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent z-0 pointer-events-none"></div>
+<!-- Simulating a camera feed with an image and overlay -->
+<img class="w-full h-full object-cover opacity-80 mix-blend-luminosity absolute inset-0" data-alt="A stark, high-contrast night vision camera feed of a desolate industrial border sector. The scene is illuminated by harsh, angular security lights casting long, dramatic shadows. The aesthetic is heavily technical, simulating a raw, unedited surveillance stream with subtle digital noise and high dynamic range. Deep blacks contrast with blinding whites." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBwQ0rhgH_RflkqXgYxRCUaSwgjh34Sj9EqY4Et0gSwUuy80gBlfV8Z4uhq9dN3VVc0OuKEp0fDcVM5P3h3tfRJdOiDERF7RG40tQWwEBPkrgDh9ohF-v9vG96uDQpudW0C3AYUPUXrUCWAddUJS6EvbtIoLwI55TF4uMEnHvDu24s_B4yWHsyJ2FEGMovSz9ksyGQxbKqe6RZxLyxZRWn-8u-VeBnT1U5_H4WDKvlO3WtrYyzoMkn5ug"/>
+<!-- Bounding Box -->
+<div class="absolute top-1/3 left-1/4 w-[150px] h-[300px] border border-[#FF5C67] z-10" style="border-image: linear-gradient(to right, #FF5C67 10%, transparent 10%, transparent 90%, #FF5C67 90%) 1; border-image-slice: 1;">
+<!-- Bracket style corners using pseudo elements would normally go here, simplified for inline -->
+<div class="absolute -top-[1px] -left-[1px] w-4 h-4 border-t-2 border-l-2 border-[#FF5C67]"></div>
+<div class="absolute -top-[1px] -right-[1px] w-4 h-4 border-t-2 border-r-2 border-[#FF5C67]"></div>
+<div class="absolute -bottom-[1px] -left-[1px] w-4 h-4 border-b-2 border-l-2 border-[#FF5C67]"></div>
+<div class="absolute -bottom-[1px] -right-[1px] w-4 h-4 border-b-2 border-r-2 border-[#FF5C67]"></div>
+<div class="absolute -top-6 left-0 bg-[#FF5C67]/20 border border-[#FF5C67]/50 backdrop-blur-sm px-1 py-0.5 font-technical-xs text-technical-xs text-[#FF5C67] whitespace-nowrap">
+                            Person P-014 (94%)
+                        </div>
+</div>
+</div>
+<!-- Telemetry & Insights -->
+<div class="md:col-span-4 flex flex-col gap-panel-gap">
+<!-- Details Card -->
+<div class="bg-surface-container-lowest border border-outline-variant p-md flex-1">
+<h2 class="font-label-caps text-label-caps text-on-surface-variant mb-md border-b border-outline-variant pb-xs">INCIDENT TELEMETRY</h2>
+<div class="space-y-sm">
+<div class="flex justify-between items-center border-b border-surface-variant pb-xs">
+<span class="font-technical-sm text-technical-sm text-on-surface-variant">Zone</span>
+<span class="font-technical-sm text-technical-sm text-on-surface">Restricted Sector A</span>
+</div>
+<div class="flex justify-between items-center border-b border-surface-variant pb-xs">
+<span class="font-technical-sm text-technical-sm text-on-surface-variant">Object ID</span>
+<span class="font-technical-sm text-technical-sm text-on-surface">Person P-014</span>
+</div>
+<div class="flex justify-between items-center border-b border-surface-variant pb-xs">
+<span class="font-technical-sm text-technical-sm text-on-surface-variant">AI Confidence</span>
+<span class="font-technical-sm text-technical-sm text-primary">94%</span>
+</div>
+</div>
+</div>
+<!-- AI Insight Card -->
+<div class="bg-surface-container-lowest border border-primary/30 p-md flex-1 relative overflow-hidden">
+<div class="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full blur-2xl -mt-10 -mr-10"></div>
+<h2 class="font-label-caps text-label-caps text-primary mb-sm flex items-center gap-xs">
+<span class="material-symbols-outlined text-[14px]">psychology</span> AI INSIGHT
+                        </h2>
+<div class="font-body-md text-body-md text-on-surface mb-md">
+                            Potential restricted-zone entry detected.
+                        </div>
+<div class="space-y-xs">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-[16px] text-tertiary">check_circle</span>
+<span class="font-technical-sm text-technical-sm text-on-surface-variant">Person detected</span>
+</div>
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-[16px] text-tertiary">check_circle</span>
+<span class="font-technical-sm text-technical-sm text-on-surface-variant">Restricted zone crossed</span>
+</div>
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-[16px] text-tertiary">check_circle</span>
+<span class="font-technical-sm text-technical-sm text-on-surface-variant">Movement detected</span>
+</div>
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-[16px] text-tertiary">check_circle</span>
+<span class="font-technical-sm text-technical-sm text-on-surface-variant">Confidence above threshold</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>

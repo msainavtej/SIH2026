@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ANPR - BorderAI</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-container": "#ca8100",
+                        "outline-variant": "#424754",
+                        "surface-bright": "#31394d",
+                        "error-container": "#93000a",
+                        "on-error": "#690005",
+                        "error": "#ffb4ab",
+                        "on-primary-container": "#00285d",
+                        "tertiary-fixed": "#ffddb8",
+                        "secondary": "#4edea3",
+                        "inverse-on-surface": "#283044",
+                        "surface-tint": "#adc6ff",
+                        "primary-fixed-dim": "#adc6ff",
+                        "secondary-fixed": "#6ffbbe",
+                        "background": "#0b1326",
+                        "on-background": "#dae2fd",
+                        "primary-container": "#4d8eff",
+                        "on-secondary-fixed": "#002113",
+                        "on-surface": "#dae2fd",
+                        "on-tertiary-container": "#3e2400",
+                        "surface-container-lowest": "#060e20",
+                        "on-primary": "#002e6a",
+                        "surface-container-low": "#131b2e",
+                        "surface-container-highest": "#2d3449",
+                        "inverse-primary": "#005ac2",
+                        "secondary-container": "#00a572",
+                        "secondary-fixed-dim": "#4edea3",
+                        "surface-container": "#171f33",
+                        "surface": "#0b1326",
+                        "on-error-container": "#ffdad6",
+                        "surface-variant": "#2d3449",
+                        "on-tertiary-fixed": "#2a1700",
+                        "surface-container-high": "#222a3d",
+                        "on-primary-fixed-variant": "#004395",
+                        "on-secondary-container": "#00311f",
+                        "primary-fixed": "#d8e2ff",
+                        "primary": "#adc6ff",
+                        "inverse-surface": "#dae2fd",
+                        "outline": "#8c909f",
+                        "tertiary": "#ffb95f",
+                        "on-tertiary": "#472a00",
+                        "tertiary-fixed-dim": "#ffb95f",
+                        "on-tertiary-fixed-variant": "#653e00",
+                        "on-secondary-fixed-variant": "#005236",
+                        "on-secondary": "#003824",
+                        "surface-dim": "#0b1326",
+                        "on-primary-fixed": "#001a42",
+                        "on-surface-variant": "#c2c6d6"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "gutter": "12px",
+                        "xs": "4px",
+                        "lg": "24px",
+                        "container-margin": "24px",
+                        "sm": "8px",
+                        "unit": "4px",
+                        "md": "16px",
+                        "xl": "32px"
+                    },
+                    "fontFamily": {
+                        "body-sm": ["Inter"],
+                        "mono-data": ["JetBrains Mono"],
+                        "headline-sm": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "label-md": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "body-md": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "display-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-sm": ["13px", { "lineHeight": "18px", "fontWeight": "400" }],
+                        "mono-data": ["13px", { "lineHeight": "18px", "fontWeight": "400" }],
+                        "headline-sm": ["18px", { "lineHeight": "24px", "fontWeight": "600" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "label-sm": ["11px", { "lineHeight": "14px", "fontWeight": "500" }],
+                        "display-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .demo-watermark {
+            pointer-events: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-45deg);
+            font-size: 8rem;
+            color: rgba(255, 255, 255, 0.03);
+            white-space: nowrap;
+            z-index: 9999;
+            font-weight: 800;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-sm h-screen overflow-hidden flex">
+<!-- Demo Watermark -->
+<div class="demo-watermark">DEMO DATA</div>
+<!-- SideNavBar -->
+<nav class="h-screen w-64 fixed left-0 top-0 bg-surface-container border-r border-outline-variant flex flex-col h-full py-md z-40">
+<div class="px-md pb-lg border-b border-outline-variant mb-md">
+<div class="font-headline-md text-headline-md font-bold text-primary flex items-center gap-2">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">shield</span>
+                BorderAI
+            </div>
+<div class="text-on-surface-variant font-label-sm text-label-sm mt-1">AI Surveillance Platform</div>
+</div>
+<div class="flex-1 overflow-y-auto">
+<ul class="space-y-1 px-sm">
+<li>
+<a class="flex items-center gap-3 px-3 py-2 rounded text-on-surface-variant font-medium hover:bg-surface-container-high hover:text-on-surface transition-colors duration-200 ease-in-out font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+                        Dashboard
+                    </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-3 py-2 rounded text-on-surface-variant font-medium hover:bg-surface-container-high hover:text-on-surface transition-colors duration-200 ease-in-out font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">videocam</span>
+                        Video Analysis
+                    </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-3 py-2 rounded bg-surface-container-high text-primary font-bold border-r-2 border-primary transition-colors duration-200 ease-in-out font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">directions_car</span>
+                        ANPR
+                    </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-3 py-2 rounded text-on-surface-variant font-medium hover:bg-surface-container-high hover:text-on-surface transition-colors duration-200 ease-in-out font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">warning</span>
+                        Security Events
+                    </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-3 py-2 rounded text-on-surface-variant font-medium hover:bg-surface-container-high hover:text-on-surface transition-colors duration-200 ease-in-out font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">assessment</span>
+                        Reports
+                    </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-3 py-2 rounded text-on-surface-variant font-medium hover:bg-surface-container-high hover:text-on-surface transition-colors duration-200 ease-in-out font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">settings</span>
+                        Settings
+                    </a>
+</li>
+</ul>
+</div>
+<div class="mt-auto px-sm pt-md border-t border-outline-variant">
+<a class="flex items-center gap-3 px-3 py-2 rounded text-on-surface-variant font-medium hover:bg-surface-container-high hover:text-on-surface transition-colors duration-200 ease-in-out font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">check_circle</span>
+                System Status
+            </a>
+</div>
+</nav>
+<!-- TopNavBar -->
+<header class="h-16 fixed top-0 right-0 w-[calc(100%-16rem)] bg-surface-container-low border-b border-outline-variant flex justify-between items-center px-lg h-full z-30">
+<div class="flex items-center gap-lg">
+<h1 class="font-headline-sm text-headline-sm font-bold text-primary">BorderAI</h1>
+<nav class="hidden md:flex gap-md h-full">
+<a class="h-full flex items-center text-on-surface-variant hover:text-on-surface font-label-md text-label-md cursor-pointer active:opacity-80" href="#">Live Feeds</a>
+<a class="h-full flex items-center text-on-surface-variant hover:text-on-surface font-label-md text-label-md cursor-pointer active:opacity-80" href="#">Active Alerts</a>
+</nav>
+</div>
+<div class="flex items-center gap-md">
+<div class="relative w-64">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="w-full bg-surface-container border border-outline-variant rounded pl-10 pr-3 py-1.5 text-body-sm text-on-surface focus:border-primary focus:ring-1 focus:ring-primary outline-none" placeholder="Search..." type="text"/>
+</div>
+<button class="text-on-surface-variant hover:text-on-surface cursor-pointer active:opacity-80">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="text-on-surface-variant hover:text-on-surface cursor-pointer active:opacity-80">
+<span class="material-symbols-outlined">account_circle</span>
+</button>
+</div>
+</header>
+<!-- Main Content -->
+<main class="ml-64 mt-16 p-lg w-full h-[calc(100vh-4rem)] flex gap-lg bg-surface">
+<!-- Left Panel: List/Filters -->
+<div class="flex-1 flex flex-col bg-surface-container border border-outline-variant rounded-lg overflow-hidden">
+<!-- Filters Header -->
+<div class="p-md border-b border-outline-variant flex gap-sm items-center justify-between bg-surface-container-high">
+<div class="flex gap-sm items-center">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-2 top-1/2 -translate-y-1/2 text-on-surface-variant text-[16px]">search</span>
+<input class="bg-surface-container border border-outline-variant rounded pl-8 pr-2 py-1 text-body-sm text-on-surface focus:border-primary focus:ring-1 focus:ring-primary outline-none w-48" placeholder="Search Plate Number..." type="text"/>
+</div>
+<select class="bg-surface-container border border-outline-variant rounded px-2 py-1 text-body-sm text-on-surface focus:border-primary outline-none">
+<option>Today</option>
+<option>Yesterday</option>
+<option>Custom Date</option>
+</select>
+<select class="bg-surface-container border border-outline-variant rounded px-2 py-1 text-body-sm text-on-surface focus:border-primary outline-none">
+<option>All Types</option>
+<option>Car</option>
+<option>Truck</option>
+<option>Bike</option>
+</select>
+</div>
+<button class="flex items-center gap-1 text-on-surface-variant hover:text-primary transition-colors text-label-md">
+<span class="material-symbols-outlined text-[16px]">filter_list</span> Filters
+                </button>
+</div>
+<!-- Table Container -->
+<div class="flex-1 overflow-auto">
+<table class="w-full text-left border-collapse">
+<thead class="sticky top-0 bg-surface-container-high font-label-md text-label-md text-on-surface-variant border-b border-outline-variant">
+<tr>
+<th class="py-2 px-md font-medium">Plate Number</th>
+<th class="py-2 px-md font-medium">Type</th>
+<th class="py-2 px-md font-medium">Time</th>
+<th class="py-2 px-md font-medium">Camera</th>
+<th class="py-2 px-md font-medium">Conf.</th>
+<th class="py-2 px-md font-medium">Status</th>
+</tr>
+</thead>
+<tbody class="font-body-sm text-body-sm text-on-surface divide-y divide-outline-variant">
+<tr class="hover:bg-surface-container-highest cursor-pointer transition-colors">
+<td class="py-2 px-md font-mono-data">KA01XX9999</td>
+<td class="py-2 px-md">Car</td>
+<td class="py-2 px-md">14:45:00</td>
+<td class="py-2 px-md">Cam-02</td>
+<td class="py-2 px-md">99%</td>
+<td class="py-2 px-md">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-secondary/10 text-secondary border border-secondary/20">
+                                    Registered
+                                </span>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-highest cursor-pointer transition-colors">
+<td class="py-2 px-md font-mono-data">DL05YY8888</td>
+<td class="py-2 px-md">Truck</td>
+<td class="py-2 px-md">14:42:15</td>
+<td class="py-2 px-md">Cam-04</td>
+<td class="py-2 px-md">92%</td>
+<td class="py-2 px-md">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-tertiary-container/10 text-tertiary border border-tertiary-container/20">
+                                    Unknown
+                                </span>
+</td>
+</tr>
+<tr class="bg-surface-container-highest border-l-2 border-error cursor-pointer">
+<td class="py-2 px-md font-mono-data text-error">MH12ZZ7777</td>
+<td class="py-2 px-md">SUV</td>
+<td class="py-2 px-md">14:38:10</td>
+<td class="py-2 px-md">Cam-01</td>
+<td class="py-2 px-md">96%</td>
+<td class="py-2 px-md">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-error/10 text-error border border-error/20">
+                                    Blacklisted
+                                </span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Right Panel: Detail View (MH12ZZ7777) -->
+<div class="w-80 flex flex-col bg-surface-container border border-outline-variant rounded-lg overflow-hidden shrink-0">
+<div class="p-md border-b border-outline-variant bg-surface-container-high flex justify-between items-center">
+<h2 class="font-headline-sm text-headline-sm font-bold text-on-surface">Detection Details</h2>
+<button class="text-on-surface-variant hover:text-on-surface">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+<div class="p-md flex-1 overflow-y-auto flex flex-col gap-md">
+<!-- Plate Image -->
+<div class="bg-background rounded border border-outline-variant p-2 flex flex-col items-center justify-center relative group">
+<div class="text-on-surface-variant font-label-sm text-label-sm mb-1 absolute top-1 left-2">Cropped Plate</div>
+<img alt="Cropped Plate" class="mt-4 border border-outline-variant rounded object-cover h-16 w-auto" data-alt="A highly detailed close-up image of a license plate reading MH12ZZ7777 captured by an ANPR security camera. The image has a slight digital noise and sharpening effect typical of surveillance footage. Lighting is even, stark, high-contrast, set against a dark background emphasizing the bright reflective surface of the plate." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDcX7DXUUIZsOidT5I6DTRSGKJ5YPOmcSOhvCHEyyg2O-OQUm--wsxsMRjhKlAUj5Wls_qxGTCAlj1T4kXiBE9lAGDDuG-LY735bRwoFTpqAFtc5hSK3-irc4cYRZpDU09-shlfYvQImL_WjmlYM37mtEwXc1iQDRqFKHTca7qnxMjnpVZsEDoyPPoMs4HnIOpFjcwTbqSpxfG6ihIE7g2dGjLf-AYB0WA-dE5ciKH--aozNWuikegZcQ"/>
+<div class="mt-2 font-mono-data text-headline-md text-error tracking-widest font-bold">MH12ZZ7777</div>
+</div>
+<!-- Vehicle Frame -->
+<div class="bg-background rounded border border-outline-variant p-2 flex flex-col relative">
+<div class="text-on-surface-variant font-label-sm text-label-sm mb-2 absolute top-1 left-2 z-10 bg-background/80 px-1 rounded">Vehicle Frame</div>
+<div class="relative w-full aspect-video mt-4 border border-outline-variant rounded overflow-hidden">
+<img alt="Vehicle Frame" class="w-full h-full object-cover" data-alt="A wide-angle security camera capture of a dark grey SUV driving through a toll booth or checkpoint. The scene is illuminated by harsh, artificial overhead lighting. The image has a typical CCTV aesthetic with slight grain and desaturated colors, primarily dark blues and greys. A bounding box is drawn around the vehicle's license plate." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAZVVpiUU70GCeh7neeUYiJz8IL7sR05SVDIAPn922c8k8Mjpx7xn2A8Z6EqGiviaCzeWCoj0ZqDNVwABXxJepPpgHx7q-Y93cet2tXgWHzENier7nac5T_tFefTMJN_tPuNQgpmZoXgz4PxJcIYUKFB9NjNifJjEIKk4iIJc-EOPxCoo4vBQbegQ2Y7Z9UDXEqp6gl48Ik_qjS_JlC6XGVUAIHZVd57yjj4sCmbKFReHQR0JZsSUXb7A"/>
+<!-- Bounding Box Overlay -->
+<div class="absolute border-2 border-error w-8 h-4 bottom-[20%] left-[45%] bg-error/20"></div>
+</div>
+</div>
+<!-- Metadata List -->
+<div class="bg-surface-container-high rounded border border-outline-variant p-sm flex flex-col gap-2">
+<div class="flex justify-between items-center border-b border-outline-variant pb-1">
+<span class="text-on-surface-variant font-label-md text-label-md">Status</span>
+<span class="text-error font-body-sm font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">warning</span> Blacklisted
+                        </span>
+</div>
+<div class="flex justify-between items-center border-b border-outline-variant pb-1">
+<span class="text-on-surface-variant font-label-md text-label-md">Confidence</span>
+<span class="text-on-surface font-body-sm font-mono-data">96.4%</span>
+</div>
+<div class="flex justify-between items-center border-b border-outline-variant pb-1">
+<span class="text-on-surface-variant font-label-md text-label-md">Track ID</span>
+<span class="text-on-surface font-body-sm font-mono-data">TRK-8842-A</span>
+</div>
+<div class="flex justify-between items-center border-b border-outline-variant pb-1">
+<span class="text-on-surface-variant font-label-md text-label-md">Camera</span>
+<span class="text-on-surface font-body-sm">Cam-01 (North Gate)</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-on-surface-variant font-label-md text-label-md">Timestamp</span>
+<span class="text-on-surface font-body-sm font-mono-data">14:38:10.452</span>
+</div>
+</div>
+<!-- Actions -->
+<div class="mt-auto pt-md flex gap-sm">
+<button class="flex-1 bg-surface border border-outline-variant text-on-surface py-2 rounded font-label-md text-label-md hover:bg-surface-container-highest transition-colors">
+                        Ignore
+                    </button>
+<button class="flex-1 bg-error text-on-error py-2 rounded font-label-md text-label-md font-bold hover:bg-error/90 transition-colors">
+                        Raise Alert
+                    </button>
+</div>
+</div>
+</div>
+</main>
+</body></html>

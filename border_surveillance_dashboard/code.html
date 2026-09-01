@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>BORDER-X - Command Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                            "inverse-primary": "#4353c3",
+                            "background": "#0f141b",
+                            "on-secondary-container": "#002b50",
+                            "error": "#ffb4ab",
+                            "surface": "#0f141b",
+                            "surface-dim": "#0f141b",
+                            "secondary-fixed-dim": "#a2c9ff",
+                            "on-surface": "#dee2ed",
+                            "primary-fixed-dim": "#bcc3ff",
+                            "on-error": "#690005",
+                            "on-error-container": "#ffdad6",
+                            "secondary": "#a2c9ff",
+                            "on-secondary-fixed": "#001c38",
+                            "primary": "#bcc3ff",
+                            "tertiary-fixed-dim": "#4ae08d",
+                            "surface-container-lowest": "#090e15",
+                            "outline": "#8f8f9f",
+                            "secondary-fixed": "#d3e4ff",
+                            "on-surface-variant": "#c6c5d5",
+                            "tertiary-fixed": "#6bfda7",
+                            "surface-container-high": "#252a32",
+                            "primary-container": "#7c8cff",
+                            "on-primary-container": "#001892",
+                            "outline-variant": "#454653",
+                            "on-tertiary-fixed": "#00210f",
+                            "on-background": "#dee2ed",
+                            "surface-container-highest": "#30353d",
+                            "on-tertiary": "#00391d",
+                            "primary-fixed": "#dfe0ff",
+                            "tertiary-container": "#00ac63",
+                            "on-primary-fixed": "#000c60",
+                            "inverse-surface": "#dee2ed",
+                            "surface-tint": "#bcc3ff",
+                            "surface-container-low": "#171c23",
+                            "tertiary": "#4ae08d",
+                            "on-primary-fixed-variant": "#2839aa",
+                            "on-tertiary-container": "#00371c",
+                            "surface-variant": "#30353d",
+                            "surface-container": "#1b2027",
+                            "on-tertiary-fixed-variant": "#00522c",
+                            "secondary-container": "#3994ef",
+                            "inverse-on-surface": "#2c3138",
+                            "on-secondary-fixed-variant": "#004881",
+                            "error-container": "#93000a",
+                            "on-secondary": "#00315b",
+                            "surface-bright": "#353941",
+                            "on-primary": "#041c94"
+                    },
+                    "borderRadius": {
+                            "DEFAULT": "0.125rem",
+                            "lg": "0.25rem",
+                            "xl": "0.5rem",
+                            "full": "0.75rem"
+                    },
+                    "spacing": {
+                            "lg": "16px",
+                            "panel-gap": "2px",
+                            "container-margin": "16px",
+                            "xs": "4px",
+                            "md": "12px",
+                            "base": "4px",
+                            "xl": "24px",
+                            "sm": "8px"
+                    },
+                    "fontFamily": {
+                            "display-md": [
+                                    "hankenGrotesk"
+                            ],
+                            "body-lg": [
+                                    "geist"
+                            ],
+                            "technical-xs": [
+                                    "jetbrainsMono"
+                            ],
+                            "technical-sm": [
+                                    "jetbrainsMono"
+                            ],
+                            "body-md": [
+                                    "geist"
+                            ],
+                            "display-lg": [
+                                    "hankenGrotesk"
+                            ],
+                            "label-caps": [
+                                    "hankenGrotesk"
+                            ]
+                    },
+                    "fontSize": {
+                            "display-md": [
+                                    "24px",
+                                    {
+                                            "lineHeight": "30px",
+                                            "letterSpacing": "-0.01em",
+                                            "fontWeight": "600"
+                                    }
+                            ],
+                            "body-lg": [
+                                    "14px",
+                                    {
+                                            "lineHeight": "20px",
+                                            "fontWeight": "400"
+                                    }
+                            ],
+                            "technical-xs": [
+                                    "11px",
+                                    {
+                                            "lineHeight": "14px",
+                                            "letterSpacing": "0.02em",
+                                            "fontWeight": "500"
+                                    }
+                            ],
+                            "technical-sm": [
+                                    "12px",
+                                    {
+                                            "lineHeight": "16px",
+                                            "fontWeight": "500"
+                                    }
+                            ],
+                            "body-md": [
+                                    "13px",
+                                    {
+                                            "lineHeight": "18px",
+                                            "fontWeight": "400"
+                                    }
+                            ],
+                            "display-lg": [
+                                    "28px",
+                                    {
+                                            "lineHeight": "34px",
+                                            "letterSpacing": "-0.02em",
+                                            "fontWeight": "600"
+                                    }
+                            ],
+                            "label-caps": [
+                                    "10px",
+                                    {
+                                            "lineHeight": "12px",
+                                            "letterSpacing": "0.06em",
+                                            "fontWeight": "700"
+                                    }
+                            ]
+                    }
+            }
+        }
+    </script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        @font-face {
+            font-family: 'hankenGrotesk';
+            src: url('https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@600;700&display=swap');
+        }
+        @font-face {
+            font-family: 'geist';
+            src: url('https://fonts.googleapis.com/css2?family=Geist:wght@400&display=swap');
+        }
+        @font-face {
+            font-family: 'jetbrainsMono';
+            src: url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500&display=swap');
+        }
+        body { background-color: #0f141b; color: #dee2ed; }
+        .material-symbols-outlined {
+          font-variation-settings:
+          'FILL' 0,
+          'wght' 400,
+          'GRAD' 0,
+          'opsz' 24
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen overflow-x-hidden">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full h-[60px] z-50 bg-surface dark:bg-surface border-b border-outline-variant flex justify-between items-center px-lg">
+<div class="flex items-center gap-lg">
+<span class="font-display-md text-display-md font-bold text-primary tracking-tighter">BORDER-X</span>
+<div class="hidden md:flex gap-md">
+<span class="text-on-surface-variant font-technical-sm px-sm py-xs rounded hover:bg-surface-container-high transition-colors scale-95 active:duration-75 cursor-pointer">AI ENGINE ACTIVE</span>
+<span class="text-on-surface-variant font-technical-sm px-sm py-xs rounded hover:bg-surface-container-high transition-colors scale-95 active:duration-75 cursor-pointer">CAMERA SYSTEM ONLINE</span>
+</div>
+</div>
+<div class="flex items-center gap-md text-primary dark:text-primary">
+<span class="material-symbols-outlined hover:bg-surface-container-high transition-colors rounded p-xs cursor-pointer">notifications</span>
+<span class="material-symbols-outlined hover:bg-surface-container-high transition-colors rounded p-xs cursor-pointer">schedule</span>
+<img alt="Operator Profile" class="w-8 h-8 rounded-full border border-outline-variant object-cover ml-sm" data-alt="A small, circular avatar portrait of a security operator wearing a headset in a dark, high-tech command center environment. Cool blue lighting. Premium, professional aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAIKX7Ck-2cSYTih95UznZLF0ElbTKNco6RdXIPU9nicMxUQZy_v4AM0bk5g3rX0ZuzTIiArTB0Q9yH4Op83vWYE4nhxYoUX4ejQkXw9l-uUdhPbRCXLD0g1LcnGXXJM5WX59JY-u6dI8ALtVBtkzJZJ8yTMNNxXNyzkC12ggDltihA6smBKU84ONQEqauyTFZL5HczmbAgYnJMDLmw5tObajqpwU1Ax6dv7ITJs4XbUpCwp_bG-KPl-w"/>
+</div>
+</nav>
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-[60px] h-[calc(100vh-60px)] w-[220px] bg-surface-container-lowest dark:bg-surface-container-lowest border-r border-outline-variant flex flex-col py-md gap-xs hidden md:flex z-40">
+<div class="px-lg pb-md mb-md border-b border-outline-variant">
+<div class="flex items-center gap-sm">
+<img alt="Operator Profile" class="w-10 h-10 rounded-full border border-outline-variant object-cover" data-alt="A small, circular avatar portrait of a security operator wearing a headset in a dark, high-tech command center environment. Cool blue lighting. Premium, professional aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAvw80Uf2REpruJzgkGxgXf-jmQsAv3FaPgfGTOzZKrHw5IDhT9y3qKAkyoVuPC6RahFj6z1moFzrPbNU0B10yRzSbWu2mUBCTWk6Y3od5zNp6qeNfCq9yaCYrTCvWwV1jx3WWEcz_aoTjA7LnIKmAQO9UZbMygVW0UwOX8qFeN2ZQOVOcsObNAR9v5bN9fL7thdGLVaRnM8ReHwuRoBS2mldGAXoxJRpkhtz3vU1LG9CDmxiM-BHCLEw"/>
+<div>
+<div class="font-display-md text-display-md text-primary text-sm leading-tight">OPERATOR-01</div>
+<div class="font-technical-xs text-technical-xs text-on-surface-variant">COMMAND CENTER</div>
+</div>
+</div>
+</div>
+<nav class="flex flex-col gap-xs px-sm flex-grow overflow-y-auto">
+<a class="flex items-center gap-md px-md py-sm rounded bg-primary-container text-on-primary-container border-r-2 border-primary font-body-md text-body-md transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+                Dashboard
+            </a>
+<a class="flex items-center gap-md px-md py-sm rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all font-body-md text-body-md duration-200" href="#">
+<span class="material-symbols-outlined">analytics</span>
+                Video Analysis
+            </a>
+<a class="flex items-center gap-md px-md py-sm rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all font-body-md text-body-md duration-200" href="#">
+<span class="material-symbols-outlined">videocam</span>
+                Live Surveillance
+            </a>
+<a class="flex items-center gap-md px-md py-sm rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all font-body-md text-body-md duration-200" href="#">
+<span class="material-symbols-outlined">directions_car</span>
+                ANPR / Vehicles
+            </a>
+<a class="flex items-center gap-md px-md py-sm rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all font-body-md text-body-md duration-200" href="#">
+<span class="material-symbols-outlined">person</span>
+                People
+            </a>
+<a class="flex items-center gap-md px-md py-sm rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all font-body-md text-body-md duration-200" href="#">
+<span class="material-symbols-outlined">emergency</span>
+                Incidents
+            </a>
+<a class="flex items-center gap-md px-md py-sm rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all font-body-md text-body-md duration-200" href="#">
+<span class="material-symbols-outlined">linked_camera</span>
+                Cameras
+            </a>
+<a class="flex items-center gap-md px-md py-sm rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all font-body-md text-body-md duration-200" href="#">
+<span class="material-symbols-outlined">monitoring</span>
+                Analytics
+            </a>
+<a class="flex items-center gap-md px-md py-sm rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all font-body-md text-body-md duration-200" href="#">
+<span class="material-symbols-outlined">inventory_2</span>
+                Evidence
+            </a>
+<a class="flex items-center gap-md px-md py-sm rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all font-body-md text-body-md duration-200" href="#">
+<span class="material-symbols-outlined">health_and_safety</span>
+                System Health
+            </a>
+</nav>
+</aside>
+<!-- Main Content -->
+<main class="pt-[76px] md:pl-[236px] p-container-margin min-h-screen">
+<!-- Header -->
+<header class="mb-lg">
+<h1 class="font-display-lg text-display-lg text-primary uppercase tracking-tight">BORDER SURVEILLANCE</h1>
+<p class="font-technical-sm text-technical-sm text-on-surface-variant uppercase mt-xs">Real-time AI-powered video intelligence</p>
+</header>
+<!-- KPI Grid -->
+<div class="grid grid-cols-2 md:grid-cols-5 gap-panel-gap mb-lg">
+<!-- KPI 1 -->
+<div class="bg-surface-container-low border border-outline-variant p-md flex flex-col justify-between h-[80px]">
+<div class="font-label-caps text-label-caps text-on-surface-variant">VIDEOS ANALYZED</div>
+<div class="font-technical-sm text-technical-sm text-primary text-xl">24</div>
+</div>
+<!-- KPI 2 -->
+<div class="bg-surface-container-low border border-outline-variant p-md flex flex-col justify-between h-[80px]">
+<div class="font-label-caps text-label-caps text-on-surface-variant">PEOPLE DETECTED</div>
+<div class="font-technical-sm text-technical-sm text-primary text-xl">142</div>
+</div>
+<!-- KPI 3 -->
+<div class="bg-surface-container-low border border-outline-variant p-md flex flex-col justify-between h-[80px]">
+<div class="font-label-caps text-label-caps text-on-surface-variant">VEHICLES DETECTED</div>
+<div class="font-technical-sm text-technical-sm text-primary text-xl">87</div>
+</div>
+<!-- KPI 4 -->
+<div class="bg-surface-container-low border border-outline-variant p-md flex flex-col justify-between h-[80px]">
+<div class="font-label-caps text-label-caps text-on-surface-variant">ANPR READS</div>
+<div class="font-technical-sm text-technical-sm text-primary text-xl">64</div>
+</div>
+<!-- KPI 5 (Alert) -->
+<div class="bg-surface-container-low border border-error border-opacity-50 p-md flex flex-col justify-between h-[80px] relative overflow-hidden">
+<div class="absolute top-0 right-0 w-2 h-2 bg-error rounded-full m-sm animate-pulse"></div>
+<div class="font-label-caps text-label-caps text-error">ACTIVE INCIDENTS</div>
+<div class="font-technical-sm text-technical-sm text-error text-xl">03</div>
+</div>
+</div>
+<!-- Main Layout Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-panel-gap h-[calc(100vh-280px)] min-h-[500px]">
+<!-- Map View (Spans 2 columns) -->
+<div class="lg:col-span-2 bg-surface-container border border-outline-variant flex flex-col relative overflow-hidden">
+<div class="p-sm border-b border-outline-variant bg-surface-container-lowest/80 backdrop-blur-md flex justify-between items-center z-10 absolute top-0 w-full">
+<span class="font-label-caps text-label-caps text-on-surface">SECTOR MAP OVERVIEW</span>
+<div class="flex gap-xs">
+<span class="font-technical-xs text-technical-xs text-on-surface-variant bg-surface-container-high px-2 py-1 rounded">SAT</span>
+<span class="font-technical-xs text-technical-xs text-primary bg-primary-container/20 border border-primary px-2 py-1 rounded">TERRAIN</span>
+</div>
+</div>
+<div class="flex-grow w-full h-full relative mt-[36px]">
+<div class="absolute inset-0 bg-cover bg-center w-full h-full opacity-60" data-alt="A high-contrast, dark mode satellite map of a border region, featuring glowing blue and red tactical overlays, grid lines, and technical UI elements. Premium surveillance aesthetic." data-location="Border Sector Alpha" style="background-image: url('https://www.gstatic.com/labs-code/stitch/stitch-placeholder-300x300.svg')"></div>
+<!-- Map Markers -->
+<div class="absolute top-1/4 left-1/4 flex items-center gap-1">
+<div class="w-3 h-3 rounded-full bg-primary animate-pulse"></div>
+<span class="font-technical-xs text-technical-xs bg-surface-container-lowest/80 px-1 border border-primary rounded text-primary">CAM-01</span>
+</div>
+<div class="absolute top-1/2 left-2/3 flex items-center gap-1">
+<div class="w-3 h-3 rounded-full bg-primary animate-pulse"></div>
+<span class="font-technical-xs text-technical-xs bg-surface-container-lowest/80 px-1 border border-primary rounded text-primary">CAM-02</span>
+</div>
+<div class="absolute bottom-1/3 left-1/2 flex items-center gap-1">
+<div class="w-3 h-3 rounded-full bg-error animate-ping"></div>
+<span class="font-technical-xs text-technical-xs bg-surface-container-lowest/80 px-1 border border-error rounded text-error">CAM-04</span>
+</div>
+</div>
+</div>
+<!-- Camera Status List -->
+<div class="bg-surface-container-lowest border border-outline-variant flex flex-col">
+<div class="p-sm border-b border-outline-variant flex justify-between items-center">
+<span class="font-label-caps text-label-caps text-on-surface">NODE STATUS</span>
+<span class="material-symbols-outlined text-on-surface-variant" style="font-size: 16px;">filter_list</span>
+</div>
+<div class="flex flex-col flex-grow overflow-y-auto">
+<!-- Camera Item -->
+<div class="p-md border-b border-outline-variant bg-surface-container-low hover:bg-surface-container transition-colors">
+<div class="flex justify-between items-start mb-xs">
+<div>
+<div class="font-technical-sm text-technical-sm text-primary">CAM-01</div>
+<div class="font-body-md text-body-md text-on-surface mt-1">North Gate</div>
+</div>
+<span class="font-technical-xs text-technical-xs text-tertiary border border-tertiary/30 bg-tertiary/10 px-2 py-0.5 rounded-full">ONLINE</span>
+</div>
+<div class="flex justify-between mt-sm font-technical-xs text-technical-xs text-on-surface-variant">
+<span>FPS: 30.0</span>
+<span>LAT: 12ms</span>
+<span>RES: 4K</span>
+</div>
+</div>
+<!-- Camera Item -->
+<div class="p-md border-b border-outline-variant bg-surface-container-low hover:bg-surface-container transition-colors">
+<div class="flex justify-between items-start mb-xs">
+<div>
+<div class="font-technical-sm text-technical-sm text-primary">CAM-02</div>
+<div class="font-body-md text-body-md text-on-surface mt-1">East Gate</div>
+</div>
+<span class="font-technical-xs text-technical-xs text-tertiary border border-tertiary/30 bg-tertiary/10 px-2 py-0.5 rounded-full">ONLINE</span>
+</div>
+<div class="flex justify-between mt-sm font-technical-xs text-technical-xs text-on-surface-variant">
+<span>FPS: 29.8</span>
+<span>LAT: 15ms</span>
+<span>RES: 4K</span>
+</div>
+</div>
+<!-- Camera Item (Alert) -->
+<div class="p-md border-b border-error/50 bg-error-container/10 hover:bg-error-container/20 transition-colors relative">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-error"></div>
+<div class="flex justify-between items-start mb-xs pl-sm">
+<div>
+<div class="font-technical-sm text-technical-sm text-error">CAM-04</div>
+<div class="font-body-md text-body-md text-on-surface mt-1">Restricted Sector</div>
+</div>
+<span class="font-technical-xs text-technical-xs text-error border border-error/30 bg-error/10 px-2 py-0.5 rounded-full">ALERT</span>
+</div>
+<div class="flex justify-between mt-sm pl-sm font-technical-xs text-technical-xs text-on-surface-variant">
+<span>FPS: 24.5</span>
+<span>LAT: 45ms</span>
+<span>RES: 1080p</span>
+</div>
+</div>
+<div class="p-md border-b border-outline-variant bg-surface-container-lowest opacity-60">
+<div class="flex justify-between items-start mb-xs">
+<div>
+<div class="font-technical-sm text-technical-sm text-outline">CAM-05</div>
+<div class="font-body-md text-body-md text-outline mt-1">Perimeter South</div>
+</div>
+<span class="font-technical-xs text-technical-xs text-outline border border-outline/30 px-2 py-0.5 rounded-full">OFFLINE</span>
+</div>
+<div class="flex justify-between mt-sm font-technical-xs text-technical-xs text-outline">
+<span>FPS: --</span>
+<span>LAT: --</span>
+<span>RES: --</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>

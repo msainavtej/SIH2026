@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Reports &amp; Analytics - BorderAI</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "tertiary-container": "#ca8100",
+                    "outline-variant": "#424754",
+                    "surface-bright": "#31394d",
+                    "error-container": "#93000a",
+                    "on-error": "#690005",
+                    "error": "#ffb4ab",
+                    "on-primary-container": "#00285d",
+                    "tertiary-fixed": "#ffddb8",
+                    "secondary": "#4edea3",
+                    "inverse-on-surface": "#283044",
+                    "surface-tint": "#adc6ff",
+                    "primary-fixed-dim": "#adc6ff",
+                    "secondary-fixed": "#6ffbbe",
+                    "background": "#0b1326",
+                    "on-background": "#dae2fd",
+                    "primary-container": "#4d8eff",
+                    "on-secondary-fixed": "#002113",
+                    "on-surface": "#dae2fd",
+                    "on-tertiary-container": "#3e2400",
+                    "surface-container-lowest": "#060e20",
+                    "on-primary": "#002e6a",
+                    "surface-container-low": "#131b2e",
+                    "surface-container-highest": "#2d3449",
+                    "inverse-primary": "#005ac2",
+                    "secondary-container": "#00a572",
+                    "secondary-fixed-dim": "#4edea3",
+                    "surface-container": "#171f33",
+                    "surface": "#0b1326",
+                    "on-error-container": "#ffdad6",
+                    "surface-variant": "#2d3449",
+                    "on-tertiary-fixed": "#2a1700",
+                    "surface-container-high": "#222a3d",
+                    "on-primary-fixed-variant": "#004395",
+                    "on-secondary-container": "#00311f",
+                    "primary-fixed": "#d8e2ff",
+                    "primary": "#adc6ff",
+                    "inverse-surface": "#dae2fd",
+                    "outline": "#8c909f",
+                    "tertiary": "#ffb95f",
+                    "on-tertiary": "#472a00",
+                    "tertiary-fixed-dim": "#ffb95f",
+                    "on-tertiary-fixed-variant": "#653e00",
+                    "on-secondary-fixed-variant": "#005236",
+                    "on-secondary": "#003824",
+                    "surface-dim": "#0b1326",
+                    "on-primary-fixed": "#001a42",
+                    "on-surface-variant": "#c2c6d6"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "gutter": "12px",
+                    "xs": "4px",
+                    "lg": "24px",
+                    "container-margin": "24px",
+                    "sm": "8px",
+                    "unit": "4px",
+                    "md": "16px",
+                    "xl": "32px"
+            },
+            "fontFamily": {
+                    "body-sm": [
+                            "Inter"
+                    ],
+                    "mono-data": [
+                            "JetBrains Mono"
+                    ],
+                    "headline-sm": [
+                            "Inter"
+                    ],
+                    "body-lg": [
+                            "Inter"
+                    ],
+                    "label-md": [
+                            "Inter"
+                    ],
+                    "headline-md": [
+                            "Inter"
+                    ],
+                    "body-md": [
+                            "Inter"
+                    ],
+                    "label-sm": [
+                            "Inter"
+                    ],
+                    "display-lg": [
+                            "Inter"
+                    ]
+            },
+            "fontSize": {
+                    "body-sm": [
+                            "13px",
+                            {
+                                    "lineHeight": "18px",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "mono-data": [
+                            "13px",
+                            {
+                                    "lineHeight": "18px",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "headline-sm": [
+                            "18px",
+                            {
+                                    "lineHeight": "24px",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "body-lg": [
+                            "16px",
+                            {
+                                    "lineHeight": "24px",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "label-md": [
+                            "12px",
+                            {
+                                    "lineHeight": "16px",
+                                    "letterSpacing": "0.05em",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "headline-md": [
+                            "24px",
+                            {
+                                    "lineHeight": "32px",
+                                    "letterSpacing": "-0.01em",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "body-md": [
+                            "14px",
+                            {
+                                    "lineHeight": "20px",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "label-sm": [
+                            "11px",
+                            {
+                                    "lineHeight": "14px",
+                                    "fontWeight": "500"
+                            }
+                    ],
+                    "display-lg": [
+                            "32px",
+                            {
+                                    "lineHeight": "40px",
+                                    "letterSpacing": "-0.02em",
+                                    "fontWeight": "600"
+                            }
+                    ]
+            }
+    },
+        },
+      }
+    </script>
+<style>
+        /* Base styles */
+        body {
+            background-color: theme('colors.background');
+            color: theme('colors.on-background');
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            overflow-x: hidden;
+        }
+
+        /* Chart placeholder animations */
+        @keyframes pulseChart {
+            0%, 100% { opacity: 0.8; }
+            50% { opacity: 0.5; }
+        }
+        .chart-bar { animation: pulseChart 3s infinite alternate ease-in-out; }
+        .chart-bar:nth-child(even) { animation-delay: 1.5s; }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: theme('colors.surface-variant'); border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: theme('colors.outline'); }
+    </style>
+</head>
+<body class="flex h-screen overflow-hidden">
+<!-- SideNavBar -->
+<aside class="hidden md:flex bg-surface-container dark:bg-surface-container text-primary dark:text-primary font-body-sm text-body-sm h-screen w-64 fixed left-0 top-0 border-r border-outline-variant flex-col py-md z-40 transition-colors duration-200 ease-in-out">
+<div class="px-md mb-xl flex items-center gap-sm">
+<span class="material-symbols-outlined text-headline-sm" data-icon="shield">shield</span>
+<div>
+<div class="font-headline-md text-headline-md font-bold text-primary dark:text-primary leading-tight">BorderAI</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant">AI Surveillance Platform</div>
+</div>
+</div>
+<nav class="flex-1 overflow-y-auto px-sm space-y-unit">
+<!-- Inactive -->
+<a class="flex items-center gap-sm px-sm py-sm rounded hover:bg-surface-container-high hover:text-on-surface text-on-surface-variant font-medium transition-colors duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-label-md text-label-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-sm px-sm py-sm rounded hover:bg-surface-container-high hover:text-on-surface text-on-surface-variant font-medium transition-colors duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="videocam">videocam</span>
+<span class="font-label-md text-label-md">Video Analysis</span>
+</a>
+<a class="flex items-center gap-sm px-sm py-sm rounded hover:bg-surface-container-high hover:text-on-surface text-on-surface-variant font-medium transition-colors duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="directions_car">directions_car</span>
+<span class="font-label-md text-label-md">ANPR</span>
+</a>
+<a class="flex items-center gap-sm px-sm py-sm rounded hover:bg-surface-container-high hover:text-on-surface text-on-surface-variant font-medium transition-colors duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="warning">warning</span>
+<span class="font-label-md text-label-md">Security Events</span>
+</a>
+<!-- Active -->
+<a class="flex items-center gap-sm px-sm py-sm rounded bg-surface-container-high text-primary font-bold border-r-2 border-primary transition-colors duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="assessment" style="font-variation-settings: 'FILL' 1;">assessment</span>
+<span class="font-label-md text-label-md">Reports</span>
+</a>
+<a class="flex items-center gap-sm px-sm py-sm rounded hover:bg-surface-container-high hover:text-on-surface text-on-surface-variant font-medium transition-colors duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-label-md text-label-md">Settings</span>
+</a>
+</nav>
+<div class="px-sm mt-auto pt-md border-t border-outline-variant">
+<a class="flex items-center gap-sm px-sm py-sm rounded hover:bg-surface-container-high hover:text-on-surface text-on-surface-variant font-medium transition-colors duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined text-secondary" data-icon="check_circle">check_circle</span>
+<span class="font-label-md text-label-md">System Status</span>
+</a>
+</div>
+</aside>
+<!-- TopNavBar -->
+<header class="bg-surface-container-low dark:bg-surface-container-low text-primary dark:text-primary font-body-sm text-body-sm h-16 fixed top-0 right-0 w-full md:w-[calc(100%-16rem)] border-b border-outline-variant flex justify-between items-center px-lg z-30">
+<!-- Mobile Logo / Hide on Desktop -->
+<div class="md:hidden font-headline-sm text-headline-sm font-bold text-primary">BorderAI</div>
+<!-- Center Nav Links -->
+<nav class="hidden md:flex h-full items-end gap-lg font-label-md text-label-md">
+<a class="h-full flex items-center text-on-surface-variant hover:text-on-surface transition-colors pb-xs pt-4 border-b-2 border-transparent" href="#">Live Feeds</a>
+<a class="h-full flex items-center text-on-surface-variant hover:text-on-surface transition-colors pb-xs pt-4 border-b-2 border-transparent" href="#">Active Alerts</a>
+</nav>
+<!-- Right Actions -->
+<div class="flex items-center gap-sm">
+<button class="p-2 text-on-surface-variant hover:text-on-surface transition-colors cursor-pointer active:opacity-80 rounded-full hover:bg-surface-container-high">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:text-on-surface transition-colors cursor-pointer active:opacity-80 rounded-full hover:bg-surface-container-high">
+<span class="material-symbols-outlined" data-icon="account_circle">account_circle</span>
+</button>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-1 w-full md:ml-64 mt-16 p-lg overflow-y-auto bg-background">
+<!-- Header -->
+<div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-lg gap-sm">
+<div>
+<h1 class="font-headline-md text-headline-md text-on-surface">Reports &amp; Analytics</h1>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-unit">Last 24 Hours Overview</p>
+</div>
+<button class="flex items-center gap-sm px-4 py-2 bg-primary-container text-on-primary-container rounded font-label-md text-label-md hover:opacity-90 transition-opacity">
+<span class="material-symbols-outlined" data-icon="download">download</span>
+                Generate PDF Report
+            </button>
+</div>
+<!-- Dashboard Cards Grid -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-md mb-lg">
+<!-- Total Vehicles -->
+<div class="bg-surface-container p-md rounded-lg border border-outline-variant flex flex-col justify-between">
+<div class="flex justify-between items-center mb-sm">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Total Vehicles</span>
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="directions_car">directions_car</span>
+</div>
+<div class="font-headline-md text-headline-md text-on-surface font-mono-data">14,289</div>
+<div class="mt-sm flex items-center gap-xs font-label-sm text-label-sm text-secondary">
+<span class="material-symbols-outlined text-[14px]" data-icon="trending_up">trending_up</span>
+<span>+5.2% vs yesterday</span>
+</div>
+</div>
+<!-- Total People -->
+<div class="bg-surface-container p-md rounded-lg border border-outline-variant flex flex-col justify-between">
+<div class="flex justify-between items-center mb-sm">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Total People</span>
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="group">group</span>
+</div>
+<div class="font-headline-md text-headline-md text-on-surface font-mono-data">3,450</div>
+<div class="mt-sm flex items-center gap-xs font-label-sm text-label-sm text-error">
+<span class="material-symbols-outlined text-[14px]" data-icon="trending_down">trending_down</span>
+<span>-1.1% vs yesterday</span>
+</div>
+</div>
+<!-- Total ANPR Hits -->
+<div class="bg-surface-container p-md rounded-lg border border-outline-variant flex flex-col justify-between">
+<div class="flex justify-between items-center mb-sm">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Total ANPR Hits</span>
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="center_focus_strong">center_focus_strong</span>
+</div>
+<div class="font-headline-md text-headline-md text-on-surface font-mono-data">12,844</div>
+<div class="mt-sm flex items-center gap-xs font-label-sm text-label-sm text-secondary">
+<span class="material-symbols-outlined text-[14px]" data-icon="trending_up">trending_up</span>
+<span>+8.4% vs yesterday</span>
+</div>
+</div>
+<!-- High Priority Alerts -->
+<div class="bg-surface-container p-md rounded-lg border border-outline-variant flex flex-col justify-between relative overflow-hidden">
+<div class="absolute right-0 top-0 w-16 h-16 bg-error/10 blur-xl rounded-full -mr-4 -mt-4"></div>
+<div class="flex justify-between items-center mb-sm relative z-10">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">High Priority Alerts</span>
+<span class="material-symbols-outlined text-error" data-icon="warning">warning</span>
+</div>
+<div class="font-headline-md text-headline-md text-error font-mono-data relative z-10">12</div>
+<div class="mt-sm flex items-center gap-xs font-label-sm text-label-sm text-error relative z-10">
+<span class="material-symbols-outlined text-[14px]" data-icon="trending_up">trending_up</span>
+<span>+3 new last hour</span>
+</div>
+</div>
+</div>
+<!-- Charts Row -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-md mb-lg">
+<!-- Bar Chart: Detection Volume -->
+<div class="bg-surface-container p-md rounded-lg border border-outline-variant lg:col-span-2 flex flex-col">
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-md">Detection Volume by Hour</h3>
+<div class="flex-1 min-h-[200px] flex items-end gap-1 sm:gap-2 px-sm pt-md border-b border-l border-outline-variant relative">
+<!-- Y Axis Labels -->
+<div class="absolute left-0 top-0 h-full flex flex-col justify-between -ml-8 py-2 font-mono-data text-[10px] text-on-surface-variant">
+<span>2k</span>
+<span>1k</span>
+<span>0</span>
+</div>
+<!-- Simulated Bars -->
+<div class="flex-1 bg-primary/40 rounded-t chart-bar" style="height: 30%;"></div>
+<div class="flex-1 bg-primary/60 rounded-t chart-bar" style="height: 20%;"></div>
+<div class="flex-1 bg-primary/40 rounded-t chart-bar" style="height: 15%;"></div>
+<div class="flex-1 bg-primary/20 rounded-t chart-bar" style="height: 10%;"></div>
+<div class="flex-1 bg-primary/30 rounded-t chart-bar" style="height: 25%;"></div>
+<div class="flex-1 bg-primary/50 rounded-t chart-bar" style="height: 40%;"></div>
+<div class="flex-1 bg-primary/80 rounded-t chart-bar" style="height: 70%;"></div>
+<div class="flex-1 bg-primary rounded-t chart-bar" style="height: 90%;"></div>
+<div class="flex-1 bg-primary/90 rounded-t chart-bar" style="height: 85%;"></div>
+<div class="flex-1 bg-primary/70 rounded-t chart-bar" style="height: 60%;"></div>
+<div class="flex-1 bg-primary/50 rounded-t chart-bar" style="height: 45%;"></div>
+<div class="flex-1 bg-primary/60 rounded-t chart-bar" style="height: 55%;"></div>
+<div class="flex-1 bg-primary/70 rounded-t chart-bar" style="height: 65%;"></div>
+<div class="flex-1 bg-primary/80 rounded-t chart-bar" style="height: 75%;"></div>
+<div class="flex-1 bg-primary/90 rounded-t chart-bar" style="height: 80%;"></div>
+<div class="flex-1 bg-primary/60 rounded-t chart-bar" style="height: 50%;"></div>
+<div class="flex-1 bg-primary/40 rounded-t chart-bar" style="height: 35%;"></div>
+<div class="flex-1 bg-primary/50 rounded-t chart-bar" style="height: 45%;"></div>
+<div class="flex-1 bg-primary/70 rounded-t chart-bar" style="height: 60%;"></div>
+<div class="flex-1 bg-primary/80 rounded-t chart-bar" style="height: 85%;"></div>
+<div class="flex-1 bg-error/80 rounded-t chart-bar" style="height: 95%;"></div> <!-- Peak -->
+<div class="flex-1 bg-primary/60 rounded-t chart-bar" style="height: 50%;"></div>
+<div class="flex-1 bg-primary/40 rounded-t chart-bar" style="height: 30%;"></div>
+<div class="flex-1 bg-primary/30 rounded-t chart-bar" style="height: 20%;"></div>
+</div>
+<div class="flex justify-between px-sm mt-xs font-mono-data text-[10px] text-on-surface-variant">
+<span>00:00</span>
+<span>06:00</span>
+<span>12:00</span>
+<span>18:00</span>
+<span>24:00</span>
+</div>
+</div>
+<!-- Donut Chart: Vehicle Types -->
+<div class="bg-surface-container p-md rounded-lg border border-outline-variant flex flex-col">
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-md">Vehicle Type Distribution</h3>
+<div class="flex-1 flex flex-col items-center justify-center relative">
+<!-- Simulated Donut CSS -->
+<div class="w-40 h-40 rounded-full border-[16px] border-surface-variant relative flex items-center justify-center">
+<div class="absolute inset-0 rounded-full border-[16px] border-primary" style="clip-path: polygon(50% 50%, 50% 0, 100% 0, 100% 100%, 0 100%, 0 60%);"></div> <!-- Cars ~65% -->
+<div class="absolute inset-0 rounded-full border-[16px] border-tertiary-container" style="clip-path: polygon(50% 50%, 0 60%, 0 20%);"></div> <!-- Trucks ~20% -->
+<div class="absolute inset-0 rounded-full border-[16px] border-secondary-container" style="clip-path: polygon(50% 50%, 0 20%, 0 0, 30% 0);"></div> <!-- Vans ~10% -->
+<div class="absolute inset-0 rounded-full border-[16px] border-outline" style="clip-path: polygon(50% 50%, 30% 0, 50% 0);"></div> <!-- Bikes ~5% -->
+<div class="text-center">
+<div class="font-headline-sm text-headline-sm text-on-surface">14.2k</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant">Total</div>
+</div>
+</div>
+<div class="mt-md w-full grid grid-cols-2 gap-y-sm font-label-md text-label-md text-on-surface-variant">
+<div class="flex items-center gap-xs"><span class="w-3 h-3 rounded-full bg-primary"></span> Cars (65%)</div>
+<div class="flex items-center gap-xs"><span class="w-3 h-3 rounded-full bg-tertiary-container"></span> Trucks (20%)</div>
+<div class="flex items-center gap-xs"><span class="w-3 h-3 rounded-full bg-secondary-container"></span> Vans (10%)</div>
+<div class="flex items-center gap-xs"><span class="w-3 h-3 rounded-full bg-outline"></span> Bikes (5%)</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Activity Log List -->
+<div class="bg-surface-container rounded-lg border border-outline-variant overflow-hidden">
+<div class="p-md border-b border-outline-variant flex justify-between items-center bg-surface-container-low">
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Significant Event Log</h3>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Top 10 Recent</span>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left font-body-sm text-body-sm text-on-surface">
+<thead class="bg-surface-container border-b border-outline-variant font-label-md text-label-md text-on-surface-variant uppercase">
+<tr>
+<th class="py-sm px-md font-medium">Time</th>
+<th class="py-sm px-md font-medium">Event Type</th>
+<th class="py-sm px-md font-medium">Location</th>
+<th class="py-sm px-md font-medium">Details</th>
+<th class="py-sm px-md font-medium">Severity</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/50">
+<tr class="hover:bg-surface-variant/30 transition-colors">
+<td class="py-sm px-md font-mono-data text-on-surface-variant">14:23:45</td>
+<td class="py-sm px-md">ANPR Watchlist Hit</td>
+<td class="py-sm px-md">Gate North-02</td>
+<td class="py-sm px-md font-mono-data text-xs">ABC-1234 (Stolen Vehicle)</td>
+<td class="py-sm px-md"><span class="px-2 py-1 rounded bg-error/10 text-error font-label-sm">Critical</span></td>
+</tr>
+<tr class="hover:bg-surface-variant/30 transition-colors">
+<td class="py-sm px-md font-mono-data text-on-surface-variant">14:15:02</td>
+<td class="py-sm px-md">Perimeter Breach</td>
+<td class="py-sm px-md">Zone East-A</td>
+<td class="py-sm px-md text-on-surface-variant">Unidentified person in restricted zone</td>
+<td class="py-sm px-md"><span class="px-2 py-1 rounded bg-tertiary-container/10 text-tertiary font-label-sm">High</span></td>
+</tr>
+<tr class="hover:bg-surface-variant/30 transition-colors">
+<td class="py-sm px-md font-mono-data text-on-surface-variant">13:58:11</td>
+<td class="py-sm px-md">Camera Offline</td>
+<td class="py-sm px-md">Sector 4-B</td>
+<td class="py-sm px-md text-on-surface-variant">Signal loss detected</td>
+<td class="py-sm px-md"><span class="px-2 py-1 rounded bg-tertiary-container/10 text-tertiary font-label-sm">High</span></td>
+</tr>
+<tr class="hover:bg-surface-variant/30 transition-colors">
+<td class="py-sm px-md font-mono-data text-on-surface-variant">13:30:00</td>
+<td class="py-sm px-md">Unusual Crowd Density</td>
+<td class="py-sm px-md">Main Entrance</td>
+<td class="py-sm px-md text-on-surface-variant">Occupancy exceeded normal threshold</td>
+<td class="py-sm px-md"><span class="px-2 py-1 rounded bg-primary/10 text-primary font-label-sm">Info</span></td>
+</tr>
+<tr class="hover:bg-surface-variant/30 transition-colors">
+<td class="py-sm px-md font-mono-data text-on-surface-variant">12:45:22</td>
+<td class="py-sm px-md">ANPR Watchlist Hit</td>
+<td class="py-sm px-md">Gate South-01</td>
+<td class="py-sm px-md font-mono-data text-xs">XYZ-9876 (Expired Reg)</td>
+<td class="py-sm px-md"><span class="px-2 py-1 rounded bg-tertiary-container/10 text-tertiary font-label-sm">High</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</main>
+</body></html>

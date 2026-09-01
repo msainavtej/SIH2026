@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>BorderAI - Command Center Overview</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-container": "#ca8100",
+                        "outline-variant": "#424754",
+                        "surface-bright": "#31394d",
+                        "error-container": "#93000a",
+                        "on-error": "#690005",
+                        "error": "#ffb4ab",
+                        "on-primary-container": "#00285d",
+                        "tertiary-fixed": "#ffddb8",
+                        "secondary": "#4edea3",
+                        "inverse-on-surface": "#283044",
+                        "surface-tint": "#adc6ff",
+                        "primary-fixed-dim": "#adc6ff",
+                        "secondary-fixed": "#6ffbbe",
+                        "background": "#0b1326",
+                        "on-background": "#dae2fd",
+                        "primary-container": "#4d8eff",
+                        "on-secondary-fixed": "#002113",
+                        "on-surface": "#dae2fd",
+                        "on-tertiary-container": "#3e2400",
+                        "surface-container-lowest": "#060e20",
+                        "on-primary": "#002e6a",
+                        "surface-container-low": "#131b2e",
+                        "surface-container-highest": "#2d3449",
+                        "inverse-primary": "#005ac2",
+                        "secondary-container": "#00a572",
+                        "secondary-fixed-dim": "#4edea3",
+                        "surface-container": "#171f33",
+                        "surface": "#0b1326",
+                        "on-error-container": "#ffdad6",
+                        "surface-variant": "#2d3449",
+                        "on-tertiary-fixed": "#2a1700",
+                        "surface-container-high": "#222a3d",
+                        "on-primary-fixed-variant": "#004395",
+                        "on-secondary-container": "#00311f",
+                        "primary-fixed": "#d8e2ff",
+                        "primary": "#adc6ff",
+                        "inverse-surface": "#dae2fd",
+                        "outline": "#8c909f",
+                        "tertiary": "#ffb95f",
+                        "on-tertiary": "#472a00",
+                        "tertiary-fixed-dim": "#ffb95f",
+                        "on-tertiary-fixed-variant": "#653e00",
+                        "on-secondary-fixed-variant": "#005236",
+                        "on-secondary": "#003824",
+                        "surface-dim": "#0b1326",
+                        "on-primary-fixed": "#001a42",
+                        "on-surface-variant": "#c2c6d6"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "gutter": "12px",
+                        "xs": "4px",
+                        "lg": "24px",
+                        "container-margin": "24px",
+                        "sm": "8px",
+                        "unit": "4px",
+                        "md": "16px",
+                        "xl": "32px"
+                    },
+                    "fontFamily": {
+                        "body-sm": ["Inter"],
+                        "mono-data": ["JetBrains Mono"],
+                        "headline-sm": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "label-md": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "body-md": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "display-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-sm": ["13px", { "lineHeight": "18px", "fontWeight": "400" }],
+                        "mono-data": ["13px", { "lineHeight": "18px", "fontWeight": "400" }],
+                        "headline-sm": ["18px", { "lineHeight": "24px", "fontWeight": "600" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "label-sm": ["11px", { "lineHeight": "14px", "fontWeight": "500" }],
+                        "display-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "600" }]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom scrollbar for timeline */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #424754;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #8c909f;
+        }
+        
+        /* Subtle pulse for active status */
+        @keyframes pulse-soft {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+        .animate-pulse-soft {
+            animation: pulse-soft 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-sm text-body-sm antialiased overflow-hidden">
+<div class="flex h-screen w-full">
+<!-- Shared Component: SideNavBar -->
+<nav class="bg-surface-container dark:bg-surface-container h-screen w-64 fixed left-0 top-0 border-r border-outline-variant flex flex-col h-full py-md z-20">
+<!-- Header Brand -->
+<div class="px-md mb-xl flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary text-3xl" data-weight="fill">shield</span>
+<div>
+<h1 class="font-headline-md text-headline-md font-bold text-primary dark:text-primary">BorderAI</h1>
+<p class="font-label-sm text-label-sm text-on-surface-variant">AI Surveillance Platform</p>
+</div>
+</div>
+<!-- Navigation Links -->
+<div class="flex-1 px-sm space-y-unit">
+<!-- Dashboard (Active) -->
+<a class="flex items-center gap-sm px-sm py-sm w-full text-primary font-bold border-r-2 border-primary bg-surface-container-high transition-colors duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-md text-label-md">Dashboard</span>
+</a>
+<!-- Video Analysis (Inactive) -->
+<a class="flex items-center gap-sm px-sm py-sm w-full text-on-surface-variant font-medium hover:bg-surface-container-high hover:text-on-surface transition-colors duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined">videocam</span>
+<span class="font-label-md text-label-md">Video Analysis</span>
+</a>
+<!-- ANPR (Inactive) -->
+<a class="flex items-center gap-sm px-sm py-sm w-full text-on-surface-variant font-medium hover:bg-surface-container-high hover:text-on-surface transition-colors duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined">directions_car</span>
+<span class="font-label-md text-label-md">ANPR</span>
+</a>
+<!-- Security Events (Inactive) -->
+<a class="flex items-center gap-sm px-sm py-sm w-full text-on-surface-variant font-medium hover:bg-surface-container-high hover:text-on-surface transition-colors duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined">warning</span>
+<span class="font-label-md text-label-md">Security Events</span>
+</a>
+<!-- Reports (Inactive) -->
+<a class="flex items-center gap-sm px-sm py-sm w-full text-on-surface-variant font-medium hover:bg-surface-container-high hover:text-on-surface transition-colors duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined">assessment</span>
+<span class="font-label-md text-label-md">Reports</span>
+</a>
+<!-- Settings (Inactive) -->
+<a class="flex items-center gap-sm px-sm py-sm w-full text-on-surface-variant font-medium hover:bg-surface-container-high hover:text-on-surface transition-colors duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-md text-label-md">Settings</span>
+</a>
+</div>
+<!-- Footer Tab -->
+<div class="px-sm mt-auto">
+<a class="flex items-center gap-sm px-sm py-sm w-full text-on-surface-variant font-medium hover:bg-surface-container-high hover:text-on-surface transition-colors duration-200 ease-in-out border-t border-outline-variant pt-md" href="#">
+<span class="material-symbols-outlined text-secondary">check_circle</span>
+<span class="font-label-md text-label-md">System Status</span>
+</a>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="flex-1 ml-64 flex flex-col relative h-screen">
+<!-- Shared Component: TopNavBar -->
+<header class="bg-surface-container-low dark:bg-surface-container-low h-16 fixed top-0 right-0 w-[calc(100%-16rem)] border-b border-outline-variant flex justify-between items-center px-lg h-full z-10">
+<!-- Search (Left as per JSON) -->
+<div class="flex items-center w-64 relative">
+<span class="material-symbols-outlined absolute left-3 text-on-surface-variant">search</span>
+<input class="w-full bg-surface-container text-on-surface border border-outline-variant rounded-lg pl-10 pr-3 py-1.5 focus:outline-none focus:border-primary font-body-sm text-body-sm placeholder:text-on-surface-variant" placeholder="Search parameters..." type="text"/>
+</div>
+<!-- Links & Actions -->
+<div class="flex items-center gap-xl h-full">
+<nav class="flex h-full gap-lg">
+<a class="flex items-center text-on-surface-variant hover:text-on-surface font-label-md text-label-md h-full cursor-pointer active:opacity-80" href="#">Live Feeds</a>
+<a class="flex items-center text-on-surface-variant hover:text-on-surface font-label-md text-label-md h-full cursor-pointer active:opacity-80" href="#">Active Alerts</a>
+</nav>
+<div class="flex items-center gap-md border-l border-outline-variant pl-lg">
+<button class="text-on-surface-variant hover:text-on-surface cursor-pointer active:opacity-80 transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="text-on-surface-variant hover:text-on-surface cursor-pointer active:opacity-80 transition-colors">
+<span class="material-symbols-outlined">account_circle</span>
+</button>
+</div>
+</div>
+</header>
+<!-- Dashboard Content Scrollable Area -->
+<div class="flex-1 mt-16 p-md overflow-y-auto space-y-md">
+<!-- Metric Cards Row -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-md">
+<!-- Card 1: People Detected -->
+<div class="bg-surface-container border border-outline-variant rounded-lg p-sm flex flex-col gap-sm relative overflow-hidden group hover:border-primary transition-colors">
+<div class="flex justify-between items-start">
+<h3 class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">People Detected</h3>
+<span class="material-symbols-outlined text-outline">group</span>
+</div>
+<div class="flex items-end justify-between mt-xs">
+<span class="font-headline-md text-headline-md text-on-surface">1,248</span>
+<div class="flex items-center text-secondary font-label-sm text-label-sm bg-secondary/10 px-1.5 py-0.5 rounded">
+<span class="material-symbols-outlined text-[14px]">trending_up</span>
+<span class="ml-1">+12%</span>
+</div>
+</div>
+</div>
+<!-- Card 2: Vehicles Detected -->
+<div class="bg-surface-container border border-outline-variant rounded-lg p-sm flex flex-col gap-sm relative overflow-hidden hover:border-primary transition-colors">
+<div class="flex justify-between items-start">
+<h3 class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Vehicles Detected</h3>
+<span class="material-symbols-outlined text-outline">directions_car</span>
+</div>
+<div class="flex items-end justify-between mt-xs">
+<span class="font-headline-md text-headline-md text-on-surface">892</span>
+<div class="flex items-center text-secondary font-label-sm text-label-sm bg-secondary/10 px-1.5 py-0.5 rounded">
+<span class="material-symbols-outlined text-[14px]">trending_up</span>
+<span class="ml-1">+5%</span>
+</div>
+</div>
+</div>
+<!-- Card 3: Number Plates Recognized -->
+<div class="bg-surface-container border border-outline-variant rounded-lg p-sm flex flex-col gap-sm relative overflow-hidden hover:border-primary transition-colors">
+<div class="flex justify-between items-start">
+<h3 class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Plates Scanned</h3>
+<span class="material-symbols-outlined text-outline">pin</span>
+</div>
+<div class="flex items-end justify-between mt-xs">
+<span class="font-headline-md text-headline-md text-on-surface">875</span>
+<div class="flex items-center text-on-surface-variant font-label-sm text-label-sm bg-surface-variant px-1.5 py-0.5 rounded">
+<span class="material-symbols-outlined text-[14px]">trending_flat</span>
+<span class="ml-1">0%</span>
+</div>
+</div>
+</div>
+<!-- Card 4: Security Alerts -->
+<div class="bg-surface-container border border-outline-variant rounded-lg p-sm flex flex-col gap-sm relative overflow-hidden hover:border-error transition-colors">
+<div class="flex justify-between items-start">
+<h3 class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Security Alerts</h3>
+<span class="material-symbols-outlined text-error">warning</span>
+</div>
+<div class="flex items-end justify-between mt-xs">
+<span class="font-headline-md text-headline-md text-error">14</span>
+<div class="flex items-center text-error font-label-sm text-label-sm bg-error/10 px-1.5 py-0.5 rounded">
+<span class="material-symbols-outlined text-[14px]">priority_high</span>
+<span class="ml-1">+3 Today</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Main Layout Grid -->
+<div class="grid grid-cols-12 gap-md h-[480px]">
+<!-- Left: Large CCTV Video Feed -->
+<div class="col-span-8 bg-surface-container border border-outline-variant rounded-lg flex flex-col overflow-hidden relative">
+<!-- Top Overlay -->
+<div class="absolute top-0 inset-x-0 bg-surface-container-lowest/80 backdrop-blur-sm px-md py-sm flex justify-between items-center z-10 border-b border-outline-variant/50">
+<div class="flex items-center gap-sm">
+<div class="w-2 h-2 rounded-full bg-error animate-pulse-soft"></div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Camera C-04 - Restricted Zone</h2>
+</div>
+<div class="flex items-center gap-sm bg-primary/10 px-2 py-1 rounded border border-primary/20">
+<span class="material-symbols-outlined text-primary text-[18px]">memory</span>
+<span class="font-label-md text-label-md text-primary uppercase tracking-widest">Active Analysis</span>
+</div>
+</div>
+<!-- Video Content (Simulated with image + bounding boxes) -->
+<div class="flex-1 relative w-full h-full bg-surface-lowest">
+<div class="absolute inset-0 bg-cover bg-center opacity-80 mix-blend-luminosity" data-alt="A realistic, high-resolution simulated CCTV camera feed looking down at an industrial restricted zone. The lighting is harsh daytime sunlight casting sharp shadows on grey concrete. A white sedan is parked near a chain-link fence. Two figures in dark clothing are walking near the vehicle. The scene has a slightly desaturated, high-contrast look typical of modern surveillance cameras, with an overarching authoritative, vigilant mood. Deep blacks, cool greys, and stark whites dominate the palette." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCJV6KbjA0VAmEXg0-qoB9smp9ezrCfMXj2HA1NwnaNQzlwL3MZWcc0JUnmbkWomwmJKmZirTLSfElOXfl-O5RBku50epIxrs2wPrlx5ubMLVZZJ3KnLyPuckIkQZcd5suLv-DbPXQ0_5gApJU3evJNeVSH3QUb_s8k_h5BOwlKQzPo8FuozVDwY_-_jIQ8lU8WCMouJ5ivFRLOhiGVm67wei8FzWvri7NvoIVDHDY8HJ6b3WmQGPGCNA')"></div>
+<!-- Generative Overlay Shader -->
+
+<!-- Bounding Boxes Overlay (SVG for precision) -->
+<svg class="absolute inset-0 w-full h-full pointer-events-none" xmlns="http://www.w3.org/2000/svg">
+<!-- Vehicle Bounding Box -->
+<g transform="translate(150, 200)">
+<rect fill="none" height="120" stroke="#4edea3" stroke-width="2" vector-effect="non-scaling-stroke" width="180"></rect>
+<!-- Label -->
+<rect fill="#4edea3" height="24" width="90" y="-24"></rect>
+<text fill="#002113" font-family="JetBrains Mono" font-size="11" font-weight="bold" x="4" y="-7">T-1024 | CAR</text>
+<circle cx="180" cy="120" fill="#4edea3" r="4"></circle>
+<circle cx="0" cy="0" fill="#4edea3" r="4"></circle>
+</g>
+<!-- Person 1 Bounding Box -->
+<g transform="translate(380, 220)">
+<rect fill="none" height="100" stroke="#ffb95f" stroke-dasharray="4" stroke-width="2" vector-effect="non-scaling-stroke" width="40"></rect>
+<rect fill="#ffb95f" height="20" width="60" y="-20"></rect>
+<text fill="#2a1700" font-family="JetBrains Mono" font-size="10" font-weight="bold" x="4" y="-6">P-842</text>
+</g>
+<!-- Person 2 Bounding Box -->
+<g transform="translate(430, 210)">
+<rect fill="none" height="110" stroke="#ffb95f" stroke-dasharray="4" stroke-width="2" vector-effect="non-scaling-stroke" width="45"></rect>
+<rect fill="#ffb95f" height="20" width="60" y="-20"></rect>
+<text fill="#2a1700" font-family="JetBrains Mono" font-size="10" font-weight="bold" x="4" y="-6">P-843</text>
+</g>
+</svg>
+</div>
+<!-- Bottom Controls Overlay -->
+<div class="absolute bottom-0 inset-x-0 bg-surface-container-lowest/90 backdrop-blur-md px-md py-xs flex justify-between items-center border-t border-outline-variant/50">
+<div class="flex items-center gap-sm">
+<button class="text-on-surface hover:text-primary transition-colors"><span class="material-symbols-outlined">pause</span></button>
+<div class="font-mono-data text-mono-data text-on-surface-variant">14:32:18:04 UTC</div>
+</div>
+<div class="flex items-center gap-sm">
+<button class="text-on-surface-variant hover:text-on-surface transition-colors"><span class="material-symbols-outlined text-[20px]">zoom_in</span></button>
+<button class="text-on-surface-variant hover:text-on-surface transition-colors"><span class="material-symbols-outlined text-[20px]">fullscreen</span></button>
+</div>
+</div>
+</div>
+<!-- Right: Security Events Timeline -->
+<div class="col-span-4 bg-surface-container border border-outline-variant rounded-lg p-md flex flex-col h-full">
+<div class="flex justify-between items-center mb-md border-b border-outline-variant pb-sm">
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Recent Security Events</h2>
+<button class="text-on-surface-variant hover:text-primary text-[12px] uppercase tracking-widest font-semibold transition-colors">View All</button>
+</div>
+<!-- Timeline Container -->
+<div class="flex-1 overflow-y-auto pr-sm space-y-md relative">
+<!-- Vertical line connector -->
+<div class="absolute left-[15px] top-2 bottom-2 w-px bg-outline-variant/50 z-0"></div>
+<!-- Event Item: High Alert -->
+<div class="relative z-10 flex gap-sm group">
+<div class="mt-1 w-8 h-8 rounded-full bg-surface border border-error flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-error text-[16px]">directions_car</span>
+</div>
+<div class="bg-error/5 border border-error/20 rounded p-sm flex-1">
+<div class="flex justify-between items-start mb-1">
+<span class="font-label-sm text-label-sm bg-error/10 text-error px-1.5 py-0.5 rounded uppercase tracking-wider font-bold">High Alert</span>
+<span class="font-mono-data text-[11px] text-on-surface-variant">14:32:18</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface group-hover:text-error transition-colors">Vehicle entered restricted zone</p>
+<div class="mt-2 text-xs text-on-surface-variant font-mono-data flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">videocam</span> Cam C-04
+                                    </div>
+</div>
+</div>
+<!-- Event Item: Medium Warning -->
+<div class="relative z-10 flex gap-sm group">
+<div class="mt-1 w-8 h-8 rounded-full bg-surface border border-tertiary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-tertiary text-[16px]">person</span>
+</div>
+<div class="bg-tertiary/5 border border-tertiary/20 rounded p-sm flex-1">
+<div class="flex justify-between items-start mb-1">
+<span class="font-label-sm text-label-sm bg-tertiary/10 text-tertiary px-1.5 py-0.5 rounded uppercase tracking-wider font-bold">Warning</span>
+<span class="font-mono-data text-[11px] text-on-surface-variant">14:30:05</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface group-hover:text-tertiary transition-colors">Unknown person detected near Perimeter B</p>
+<div class="mt-2 text-xs text-on-surface-variant font-mono-data flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">videocam</span> Cam B-02
+                                    </div>
+</div>
+</div>
+<!-- Event Item: Info (added for depth) -->
+<div class="relative z-10 flex gap-sm group">
+<div class="mt-1 w-8 h-8 rounded-full bg-surface border border-primary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-primary text-[16px]">info</span>
+</div>
+<div class="bg-primary/5 border border-primary/20 rounded p-sm flex-1">
+<div class="flex justify-between items-start mb-1">
+<span class="font-label-sm text-label-sm text-primary uppercase tracking-wider font-bold">Log</span>
+<span class="font-mono-data text-[11px] text-on-surface-variant">14:15:22</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Routine patrol finished sector 4.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Bottom: ANPR Activity Table -->
+<div class="bg-surface-container border border-outline-variant rounded-lg w-full flex flex-col overflow-hidden">
+<div class="px-md py-sm border-b border-outline-variant bg-surface-container-low flex justify-between items-center">
+<h2 class="font-headline-sm text-headline-sm text-on-surface">ANPR Activity</h2>
+<button class="flex items-center gap-1 text-on-surface-variant hover:text-on-surface font-label-sm text-label-sm border border-outline-variant px-2 py-1 rounded transition-colors">
+<span class="material-symbols-outlined text-[16px]">filter_list</span> Filter
+                        </button>
+</div>
+<div class="w-full overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low/50">
+<th class="font-label-md text-label-md text-on-surface-variant px-md py-sm border-b border-outline-variant">Plate Number</th>
+<th class="font-label-md text-label-md text-on-surface-variant px-md py-sm border-b border-outline-variant">Vehicle Type</th>
+<th class="font-label-md text-label-md text-on-surface-variant px-md py-sm border-b border-outline-variant">Timestamp (UTC)</th>
+<th class="font-label-md text-label-md text-on-surface-variant px-md py-sm border-b border-outline-variant">Confidence</th>
+<th class="font-label-md text-label-md text-on-surface-variant px-md py-sm border-b border-outline-variant">Status</th>
+<th class="font-label-md text-label-md text-on-surface-variant px-md py-sm border-b border-outline-variant">Camera</th>
+</tr>
+</thead>
+<tbody class="font-mono-data text-mono-data text-on-surface divide-y divide-outline-variant/50">
+<tr class="hover:bg-surface-variant/50 transition-colors cursor-default">
+<td class="px-md py-sm font-bold text-primary">APXX1234</td>
+<td class="px-md py-sm text-on-surface-variant">Car - Sedan</td>
+<td class="px-md py-sm text-on-surface-variant">2023-10-27 14:32:18</td>
+<td class="px-md py-sm text-secondary">98%</td>
+<td class="px-md py-sm">
+<span class="bg-error/10 text-error px-2 py-0.5 rounded font-label-sm text-label-sm font-bold">Alert - Restricted</span>
+</td>
+<td class="px-md py-sm text-on-surface-variant">C-04</td>
+</tr>
+<tr class="hover:bg-surface-variant/50 transition-colors cursor-default">
+<td class="px-md py-sm font-bold">XYZ9876</td>
+<td class="px-md py-sm text-on-surface-variant">Truck - Delivery</td>
+<td class="px-md py-sm text-on-surface-variant">2023-10-27 14:15:02</td>
+<td class="px-md py-sm text-secondary">95%</td>
+<td class="px-md py-sm">
+<span class="bg-secondary/10 text-secondary px-2 py-0.5 rounded font-label-sm text-label-sm font-bold">Cleared - Logged</span>
+</td>
+<td class="px-md py-sm text-on-surface-variant">A-01 Main Gate</td>
+</tr>
+<tr class="hover:bg-surface-variant/50 transition-colors cursor-default">
+<td class="px-md py-sm font-bold text-tertiary">UNKNOWN</td>
+<td class="px-md py-sm text-on-surface-variant">Motorcycle</td>
+<td class="px-md py-sm text-on-surface-variant">2023-10-27 13:50:44</td>
+<td class="px-md py-sm text-tertiary">42%</td>
+<td class="px-md py-sm">
+<span class="bg-tertiary/10 text-tertiary px-2 py-0.5 rounded font-label-sm text-label-sm font-bold">Review Required</span>
+</td>
+<td class="px-md py-sm text-on-surface-variant">B-02 Perimeter</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>
