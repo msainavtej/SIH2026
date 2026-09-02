@@ -1,0 +1,36 @@
+anpr:
+  enabled: true
+
+  trigger:
+    vehicle_classes:
+      - car
+      - truck
+      - bus
+      - motorcycle
+    min_vehicle_confidence: 0.50
+
+  roi:
+    enabled: true
+
+  sampling:
+    max_frames_per_track: 5
+    interval_ms: 100
+
+  quality:
+    min_plate_width: 40
+    min_sharpness: 50
+
+  ocr:
+    min_confidence: 0.60
+
+  voting:
+    min_observations: 3
+    consensus_threshold: 0.60
+
+watchlist:
+  - plate: AP12AB1234
+    label: authorized
+    risk_modifier: -20
+  - plate: TS09CD5678
+    label: flagged
+    risk_modifier: 30

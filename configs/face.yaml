@@ -1,0 +1,25 @@
+face:
+  enabled: true
+
+  trigger:
+    relevant_events:
+      - ZONE_INTRUSION
+      - BORDER_APPROACH
+      - HIGH_RISK
+
+  sampling:
+    max_frames_per_track: 5
+    interval_ms: 150
+
+  quality:
+    min_face_width: 30
+    min_score: 60
+    # Categories:
+    # >= 80: HIGH
+    # >= 60: MEDIUM
+    # >= 40: LOW
+    # < 40: UNUSABLE
+
+  storage:
+    save_best_face: true
+    retention_days: 7

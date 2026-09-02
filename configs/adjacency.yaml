@@ -1,0 +1,38 @@
+# ==============================================================================
+# SKYNET CROSS-CAMERA ADJACENCY & SPATIAL-TEMPORAL TOPOLOGY CONFIGURATION
+# ==============================================================================
+# Defines directional spatial linkage from Source Camera to Target Camera
+# without appearance-based Re-ID embeddings.
+# ==============================================================================
+
+adjacency_map:
+  pair_id: "ADJ_CAM01_CAM02"
+  enabled: true
+  source_camera_id: "CAM01"
+  target_camera_id: "CAM02"
+
+  # Spatial boundary edge definitions
+  spatial_edges:
+    source_exit_edge: "right"        # Allowed: "left", "right", "top", "bottom"
+    target_entry_edge: "left"        # Allowed: "left", "right", "top", "bottom"
+    edge_threshold_fraction: 0.10    # 10% of frame dimension (e.g., 64px on 640w)
+    min_trajectory_points: 3         # Minimum trajectory points for velocity vector check
+
+  # Temporal transit parameters (seconds)
+  transit_timing:
+    min_transit_seconds: 3.0         # Minimum plausible physical transit time
+    max_transit_seconds: 15.0        # Upper bound of core transit window
+    grace_window_seconds: 7.5        # Grace window (+50% of max_transit -> 22.5s total)
+    ambiguity_tie_threshold_s: 0.5   # Tie-break threshold: decline link if candidates tie within 0.5s
+    expected_transit_seconds: 9.0    # Expected transit time: (3.0 + 15.0) / 2.0 = 9.0s
+
+  # Categorical confidence evaluation rules
+  confidence_rules:
+    detection_conf_threshold: 0.50   # Minimum YOLO detection confidence for HIGH score
+    allow_ambiguous_edge_medium: true # Allow downgrade to MEDIUM if edge is ambiguous
+    allow_grace_window_low: true     # Allow LOW confidence in grace window
+
+  # Memory & Garbage Collection parameters
+  lifecycle:
+    gc_interval_seconds: 1.0         # Frequency of background GC checks (seconds)
+    max_active_windows: 10000        # Capacity limit for open windows

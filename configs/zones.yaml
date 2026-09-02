@@ -1,0 +1,18 @@
+zones:
+  - id: RED-03
+    type: restricted
+    polygon:
+      - [100, 100]
+      - [500, 100]
+      - [500, 400]
+      - [100, 400]
+    border_direction: NE
+
+  - id: BORDER_LINE
+    type: virtual_fence
+    polygon:
+      - [50, 450]
+      - [600, 450]
+      - [600, 470]
+      - [50, 470]
+    border_direction: S

@@ -1,0 +1,25 @@
+cameras:
+  - id: CAM01
+    source_type: file
+    url: "test_video.mp4"
+    enabled: true
+    fps: 15
+    
+  - id: CAM02
+    source_type: rtsp
+    url: "${RTSP_URL_CAM02}"
+    enabled: false
+    fps: 15
+    reconnect_interval: 5
+
+  - id: MOBILE_CAM
+    source_type: rtsp
+    url: "rtsp://40.0.23.64:8554/"  # <-- REPLACE WITH YOUR PHONE's URL
+    enabled: true
+    fps: 15
+    reconnect_interval: 5
+
+  - id: PUBLIC01
+    source_type: rtsp
+    url: "rtsp://E60ihmFs2m6s9KEQPcROf5lIHQ2U1OEb:FDcxexshgcy_V4YSvPvR3@test.rtsp.stream/traffic"
+    enabled: false

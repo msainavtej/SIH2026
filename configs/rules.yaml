@@ -1,0 +1,11 @@
+risk_weights:
+  restricted_zone: 40
+  border_approach: 30
+  night_movement: 20
+  loitering: 15
+  unauthorized_vehicle: 25
+
+thresholds:
+  dwell_intrusion_seconds: 2
+  loitering_seconds: 30
+  event_grace_period_seconds: 5
