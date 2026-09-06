@@ -227,13 +227,21 @@ To prevent the edge node from exhausting disk space:
 
 ## Security & Privacy Design
 
+**Privacy-First, Anonymous-by-Default Architecture:**
+The core surveillance pipeline is designed to operate completely without facial recognition or biometric databases.
+- The system assigns temporary **Anonymous Track IDs** (e.g., `TRACK_001`) to moving objects.
+- Cross-camera correlation relies strictly on spatial-temporal non-face information (e.g., location, timing windows, movement direction, and bounding-box characteristics).
+- Normal alerts do not collect or display biometric identity data.
+
 - **Implemented:**
+  - Anonymous by default: Identity verification is decoupled and inactive.
   - Local processing (No mandatory cloud outbound streaming).
-  - No facial recognition active in the primary intrusion pipeline.
+  - No continuous facial identification or identity databases.
   - Evidence access is restricted through specific Event ID API lookups rather than arbitrary file path concatenation.
   - Immutable audit logging for operator actions.
 
-- **Future Hardening:**
+- **Future / Authorized Capabilities Only:**
+  - **Identity Verification Module:** Clearly marked as a *future/authorized* capability in the UI. Explicit operational authorization is required to activate any biometric tools.
   - Production-grade Authentication (Currently bypasses with dummy "admin123").
   - Role-Based Access Control (RBAC).
 

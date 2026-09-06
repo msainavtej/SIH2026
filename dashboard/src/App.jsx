@@ -467,7 +467,7 @@ function App() {
                       <div style={{fontWeight: 'bold', fontSize: '0.85rem'}}>
                         {evt.incident_id && (
                           <div style={{color: '#60a5fa', fontSize: '0.8rem', fontWeight: 600, marginBottom: '2px'}}>
-                            {evt.correlated_with_camera ? `Track #${evt.track_id} correlated across ${evt.camera_id} -> ${evt.correlated_with_camera}` : `Incident: ${evt.incident_id}`}
+                            {evt.correlated_with_camera ? `Anonymous Track #${evt.track_id} correlated across ${evt.camera_id} -> ${evt.correlated_with_camera}` : `Incident: ${evt.incident_id}`}
                           </div>
                         )}
                         <div style={{color: 'var(--text-main)', fontSize: '0.8rem'}}>
@@ -821,6 +821,33 @@ function App() {
           </div>
 
           <div>
+            {/* Privacy-First Identity Verification Module */}
+            <div className="panel" style={{marginBottom: '20px', border: '1px solid #9ca3af', background: 'rgba(156, 163, 175, 0.05)'}}>
+              <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '12px'}}>
+                <h3 style={{margin: 0, display: 'flex', alignItems: 'center', gap: '8px', fontSize: '1.05rem', color: '#9ca3af'}}>
+                  <span className="material-symbols-outlined" style={{color: '#9ca3af', fontSize: '20px'}}>policy</span>
+                  Identity Verification
+                </h3>
+                <span className="badge" style={{backgroundColor: 'rgba(156, 163, 175, 0.25)', color: '#9ca3af', border: '1px solid #9ca3af', padding: '4px 10px', fontSize: '0.85rem', fontWeight: 'bold'}}>
+                  FUTURE CAPABILITY
+                </span>
+              </div>
+              <div style={{
+                marginBottom: '12px',
+                padding: '10px 12px',
+                background: 'rgba(156, 163, 175, 0.1)',
+                borderLeft: '4px solid #9ca3af',
+                borderRadius: '4px'
+              }}>
+                <div style={{fontWeight: 'bold', color: 'var(--text-main)', fontSize: '0.9rem', marginBottom: '4px'}}>
+                  Privacy-First: Anonymous by Default
+                </div>
+                <div style={{fontSize: '0.85rem', color: '#9ca3af', lineHeight: '1.4'}}>
+                  This track is logged as <strong>Anonymous Anonymous Track #{selectedEvent.track_id}</strong>. Biometric and facial recognition modules are currently inactive. Identity verification is only enabled when explicitly authorized and operationally required.
+                </div>
+              </div>
+            </div>
+
             {/* Cross-Camera Spatial-Temporal Correlation Card */}
             {(selectedEvent.incident_id || selectedEvent.correlation_confidence) && (
               <div className="panel" style={{marginBottom: '20px', border: '1px solid #3b82f6', background: 'rgba(59, 130, 246, 0.05)'}}>
@@ -858,7 +885,7 @@ function App() {
                     Correlated Track Link [{selectedEvent.correlation_confidence || 'ACTIVE'}]
                   </div>
                   <div style={{marginTop: '4px', fontSize: '0.85rem', color: '#93c5fd'}}>
-                    Track #{selectedEvent.track_id} correlated across {selectedEvent.camera_id} &rarr; {selectedEvent.correlated_with_camera || 'CAM02'} (Track #{selectedEvent.correlated_with_track || '--'})
+                    Anonymous Track #{selectedEvent.track_id} correlated across {selectedEvent.camera_id} &rarr; {selectedEvent.correlated_with_camera || 'CAM02'} (Anonymous Track #{selectedEvent.correlated_with_track || '--'})
                   </div>
                 </div>
 
@@ -919,7 +946,7 @@ function App() {
                   </div>
                 )}
                 <div style={{display: 'flex', justifyContent: 'space-between', marginBottom: '8px'}}>
-                  <span>Tracking Vector:</span><strong style={{color: 'var(--text-main)'}}>{selectedEvent.track_id}</strong>
+                  <span>Anonymous Track ID:</span><strong style={{color: 'var(--text-main)'}}>TRACK_{selectedEvent.track_id}</strong>
                 </div>
               </div>
 
